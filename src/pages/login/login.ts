@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { ConversationsPage } from '../conversations/conversations';
+import { ChatroomsPage } from '../chatrooms/chatrooms';
 
 /**
  * Generated class for the LoginPage page.
@@ -34,7 +34,7 @@ export class LoginPage {
     // Store token in local storage
 
     // Push to conversations page
-    this.navCtrl.setRoot(ConversationsPage);
+    this.navCtrl.setRoot(ChatroomsPage);
     
   }
 

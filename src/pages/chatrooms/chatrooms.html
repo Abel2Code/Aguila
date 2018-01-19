@@ -7,19 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Conversations</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Chatrooms</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-   <div>
+   <div (click)="openConversationsPage()">
   <img id="mentor" src = "" align="middle">
       <p>Fall 2017 Family:<br><br><b style = "padding-left:20px"></b>Hey mentor, how was your college experience?</p>
 </div>
 
-<div>
+<div (click)="openConversationsPage()">
   <img id="mentor" src = "" align="middle">
       <p>Fall 2017 Family:<br><br><b style = "padding-left:20px"></b>Hey I need help with math HW.</p>
 </div>
