@@ -26,7 +26,7 @@ export class LoginPage {
     this.loginProvider.validateCredentials(this.username, this.password).then((data) =>{
       console.log("Data:")
       console.log(data);
-      // this.navCtrl.setRoot(ChatroomsPage);
+      this.navCtrl.setRoot(ChatroomsPage);
     });
     console.log(this.username + "\n" + this.password);
     // On error, tell the user its invalid with styles
@@ -34,8 +34,8 @@ export class LoginPage {
     // Store token in local storage
 
     // Push to conversations page
-    
-    
+
+
   }
 
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { ConversationPage } from '../conversation/conversation';
+import * as Ably from 'ably';
+
 
 /**
  * Generated class for the ChatroomsPage page.

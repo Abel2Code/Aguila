@@ -21,11 +21,18 @@
     </p>
   </ion-item>
 
+
   <ion-item style="border-right: solid 5px green;">
     <p class="chat-text" item-left>
       <strong *ngIf="!isMentee">George</strong>
       Hey mentor, how was your college experience?
     </p>
-  </ion-item> 
+  </ion-item>
+
+  <input type="text" [(ngModel)]="message"> <br/>
+  <button (click)="sendMessage()">Send Message</button>
+
+
+
 
 </ion-content>
