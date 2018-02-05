@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { ConversationPage } from '../conversation/conversation';
-
+//import {  }
 
 /**
- * Generated class for the ChatroomsPage page.
+ * Generated class for the SignupPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,20 +11,20 @@ import { ConversationPage } from '../conversation/conversation';
 
 @IonicPage()
 @Component({
-  selector: 'page-chatrooms',
-  templateUrl: 'chatrooms.html',
+  selector: 'page-signup',
+  templateUrl: 'signup.html',
 })
-export class ChatroomsPage {
+export class SignupPage {
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
   }
+
+  
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChatroomsPage');
+    console.log('ionViewDidLoad SignupPage');
   }
 
-  openConversationsPage(){
-    this.navCtrl.push(ConversationPage);
   }
-
-}

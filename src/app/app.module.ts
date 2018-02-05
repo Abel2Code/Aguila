@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 
 // Log In / Sign Up
 import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
 
 // Conversations / Messaging
 import { ChatroomsPage } from '../pages/chatrooms/chatrooms';
@@ -29,7 +30,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
     // Conversations / Messaging
     ChatroomsPage,
-    ConversationPage
+    ConversationPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
     //Log In / Sign Up
     LoginPage,
+    SignupPage,
 
     // Conversations / Messaging
     ChatroomsPage,

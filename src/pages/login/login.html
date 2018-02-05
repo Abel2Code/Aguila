@@ -10,15 +10,22 @@
 
 
 <ion-content padding>
-<h1>Aguila</h1>
-Join study groups, recieve help from mentors and many more
+<h1 class="appName">Aguila</h1>
+<p class="description">Join study groups, recieve help from mentors and many more</p>
 
 <br />
-<input type="text" [(ngModel)]="username"> <br />
-<input type="password" [(ngModel)]="password">
 
-<button (click)="login()">Login</button>
-<p>Sign Up</p>
+  <ion-input class="username" type="text" [(ngModel)]="username" placeholder="Username"></ion-input><br/>
 
-<p>Forgot Password?</p>
+  <ion-input class="password" type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+
+
+
+<!-- <input class="username" type="text" value="Username" [(ngModel)]="username"> <br />
+<input class="password" type="password" value="Password" [(ngModel)]="password"> <br/> -->
+
+<button class="login" ion-button color="grey" (click)="login()">Login</button><br/>
+<button class="signup" ion-button color="white" (click)="signup()">Sign-Up</button>
+
+<p class="forgotPassword">Forgot Password?</p>
 </ion-content>

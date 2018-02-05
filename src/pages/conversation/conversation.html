@@ -26,11 +26,19 @@
     <p class="chat-text" item-left>
       <strong *ngIf="!isMentee">George</strong>
       Hey mentor, how was your college experience?
-    </p>
+  </p>
   </ion-item>
 
-  <input type="text" [(ngModel)]="message"> <br/>
-  <button (click)="sendMessage()">Send Message</button>
+  <ion-item style="border-right: solid 5px green;">
+    <p class="chat-text" item-left>
+      <strong *ngIf="!isMentee">George</strong>
+      {{message}}
+  </p>
+  </ion-item>
+
+
+  <input id="message" [value]="message" (input)="message = $event.target.value">
+    <button (click)="sendMessage()">Send Message</button>
 
 
 

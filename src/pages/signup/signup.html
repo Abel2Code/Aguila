@@ -1,0 +1,33 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Enter Your Email</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <p class="description">Since you don't have an account yet, let's create one for you.</p>
+<!-- ADDING EMAIL AND PASSWORD -->
+  <div class = "container">
+    <form (submit) = "addEmail()">
+        <div class = "form-group">
+          <ion-input placeholder="Email@example.com" type="text" [(ngModel)] = "email" name = "email" class = "form-control"></ion-input>
+        </div>
+
+        <div class = "form-group">
+          <ion-input placeholder="Enter your Phone Number" type="text" [(ngModel)] = "phone" name = "phone" class = "form-control" required></ion-input>
+        </div>
+        <input type="submit" class = "btn btn btn-success" value="Add">
+    </form>
+  </div>
+    
+
+</ion-content>

@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginSignupApi } from '../../providers/login-signup-api';
 
 import { ChatroomsPage } from '../chatrooms/chatrooms';
+import { SignupPage } from '../signup/signup';
 
 @IonicPage()
 @Component({
@@ -34,8 +35,12 @@ export class LoginPage {
     // Store token in local storage
 
     // Push to conversations page
-
-
   }
+
+  signup() {
+    this.navCtrl.push(SignupPage);
+  }
+
+
 
 }
