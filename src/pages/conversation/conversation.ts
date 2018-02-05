@@ -23,12 +23,11 @@ export class ConversationPage {
     let channel = realtime.channels.get('channelName');
 
     //RECEIVING MESSAGES
-    channel.subscribe(function(msg) {
-      realtime.channels.get('chatroom').attach(function(err) {
+    channel.subscribe(function (msg) {
+      realtime.channels.get('chatroom').attach(function (err) {
       });
       console.log("Received: " + JSON.stringify(msg.data));
     });
-
     console.log('Connecting');
 
 
@@ -38,33 +37,29 @@ export class ConversationPage {
       window.alert('Connected');
     });
   }
-      //SENDING MESSAGES
-      
-    sendMessage() {
-      
+  //SENDING MESSAGES
+
+  sendMessage() {
+
     //   let message = document.getElementById("message");
     //   let finalMessage : any[] =[];
     //   for (var i = message;;); {
     //     finalMessage += message[i];
     // }
 
-      let channel = realtime.channels.get('channelName');
-      channel.subscribe('action', function(message) { // implicit attach
-        console.log('Message received ' + message.data);
-      });
-      channel.publish('finalMessage');
-    
-      console.log(this.message);
-    }
+    let channel = realtime.channels.get('channelName');
+    channel.subscribe('action', function (message) { // implicit attach
+      console.log('Message received ' + message.data);
+    });
+    channel.publish('action', 'boom!');
+    console.log(this.message);
+  }
 
-  
+
 
 
   ionViewDidLoad() {
-    //let channel = realtime.channels.get('channelName');
-    //channel.subscribe();
-    // realtime.channels.get('chatroom')
-    // console.log('"chatroom" exists and is now available globally in every data center');
+
     // console.log('ionViewDidLoad ConversationPage');
   }
 
