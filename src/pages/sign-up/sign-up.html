@@ -1,0 +1,142 @@
+
+
+<ion-content padding>
+  <ion-slides #signupSlider pager>
+
+    <ion-slide>
+        <p> Enter Account Info </p>
+        <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+        
+        <p>Since you don't have an account yet, let's create one for you!</p>
+        <ion-list no-lines>
+        
+            <form [formGroup]="slideOneForm">
+    
+                <ion-item>
+                    <ion-label floating>Email:</ion-label>
+                    <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+    
+                <ion-item *ngIf="!slideOneForm.controls.email.valid  && (slideOneForm.controls.email.dirty || submitAttempt)">
+                    <p>Please enter a valid email.</p>
+                </ion-item>
+    
+                <ion-item>
+                    <ion-label floating>Phone Number:</ion-label>
+                    <ion-input formControlName="phoneNumber" type="tel" [class.invalid]="!slideOneForm.controls.phoneNumber.valid && (slideOneForm.controls.phoneNumber.dirty || submitAttempt)"></ion-input>
+                </ion-item>
+                
+                <ion-item *ngIf="!slideOneForm.controls.phoneNumber.valid  && (slideOneForm.controls.phoneNumber.dirty || submitAttempt)">
+                    <p>Please enter a valid phone number. 10 digits with no spaces.</p>
+                </ion-item>
+    
+                <ion-item>
+                    <ion-label floating>Password:</ion-label>
+                    <ion-input formControlName="password" type="password" [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)"></ion-input>
+                </ion-item>
+    
+                <ion-item *ngIf="!slideOneForm.controls.password.valid  && (slideOneForm.controls.password.dirty || submitAttempt)">
+                    <p>Please enter a valid password. Minimum 4 characters.</p>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label floating>Re-enter Password:</ion-label>
+                    <ion-input formControlName="confirmPass" type="password" [class.invalid]="!slideOneForm.controls.confirmPass.valid && (slideOneForm.controls.confirmPass.dirty || submitAttempt)"></ion-input>
+                </ion-item>
+        
+                <ion-item *ngIf="!slideOneForm.controls.confirmPass.valid  && (slideOneForm.controls.confirmPass.dirty || submitAttempt)">
+                    <p>Your password does not match.</p>
+                </ion-item>
+            </form>
+            <button ion-button (click)="continueButton()"> Continue</button>
+        </ion-list>
+    </ion-slide>
+
+    <ion-slide>
+        <p> Confirm your Email </p>
+        <button ion-button icon-left (click)="prev()"><ion-icon name="arrow-back"></ion-icon> Prev</button>
+        <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+        <p>An email has been sent to</p>
+        <p>{{slideOneForm.value.email}}</p>
+        <p>Please enter the confirmation code below</p>
+        <form [formGroup]=slideTwoForm>
+            <ion-input formControlName="confirmationPin" type="tel"></ion-input>
+        </form>
+        <button ion-button (click)="continueButton()"> Confirm</button>
+    </ion-slide>
+
+    <ion-slide>
+        <p> Enter User Info </p>
+        <button ion-button icon-left (click)="prev()"><ion-icon name="arrow-back"></ion-icon> Prev</button>
+        <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+        <p>Enter your name and upload a picture here.</p>
+        <p>Keep in mind that other users and mentors alike will be a ble to see your picture</p>
+        <ion-list no-lines>
+            <form [formGroup]=slideThreeForm>
+                <ion-item>
+                    <ion-input formControlName="picture" type="file"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>First Name:</ion-label>
+                    <ion-input formControlName="firstName" type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Last Name:</ion-label>
+                    <ion-input formControlName="lastName" type="text"></ion-input>
+                </ion-item>
+            </form>
+            <button ion-button (click)="continueButton()"> Continue</button>
+        </ion-list>
+    </ion-slide>
+
+    <ion-slide>
+            <p> Enter College Info </p>
+            <button ion-button icon-left (click)="prev()"><ion-icon name="arrow-back"></ion-icon> Prev</button>
+            <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+    
+            <p>Enter the name of your school, your current scholastic year and your major.</p>
+            <ion-list no-lines>
+                <form [formGroup]=slideFourForm>
+                    <ion-item>
+                        <ion-label floating>School:</ion-label>
+                        <ion-input formControlName="school" type="text"></ion-input>
+                    </ion-item>
+                    <ion-list radio-group formControlName="year">
+                        <ion-item>
+                            <ion-label>Freshman</ion-label>
+                            <ion-radio value="freshman" checked></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Sophmore</ion-label>
+                            <ion-radio value="sophmore"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Junior</ion-label>
+                            <ion-radio value="junior" [disabled]="isDisabled"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Senior</ion-label>
+                            <ion-radio value="senior" [disabled]="isDisabled"></ion-radio>
+                        </ion-item>
+                    </ion-list>
+                    <div formArrayName="majors">
+                        <div *ngFor="let major of slideFourForm.get('majors').controls; index as i">
+                                <input [formControlName] = "i" placeholder="Major">
+                        </div>
+                    </div>
+                    <button ion-button (click)="addMajor()">Add Major</button>
+                    <div formArrayName="minors">
+                        <div *ngFor="let minor of slideFourForm.get('minors').controls; index as i">
+                            <input [formControlName] = "i" placeholder="Minor">
+                        </div>
+                    </div>
+                    <button ion-button (click)="addMinor()">Add Minor</button>
+                </form>
+                <button ion-button (click)="finishButton()"> Finish</button>
+            </ion-list>
+        </ion-slide>    
+
+  </ion-slides>
+</ion-content>
