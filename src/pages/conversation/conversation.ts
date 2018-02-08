@@ -19,6 +19,7 @@ var realtime = new Ably.Realtime({ key: apiKey, clientId: "User 1" });
 })
 
 export class ConversationPage {
+  //user message
   message: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
