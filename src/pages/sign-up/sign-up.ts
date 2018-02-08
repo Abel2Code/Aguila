@@ -26,7 +26,6 @@ export class SignUpPage {
     //The boolean to activate the styling if there is an error in the form
     submitAttempt: boolean = false;
 
-
     constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public alertCtrl: AlertController) {
         this.slideOneForm = formBuilder.group({
             email: [''],
@@ -61,7 +60,19 @@ export class SignUpPage {
     
     ngAfterViewInit(){
         //turns off the swiping slides feature to prevent access to next form
-        this.signupSlider.lockSwipes(true);
+        this.lockSwipes();
+    }
+
+    lockSwipes(){
+        //lock swiping to right or left
+        this.signupSlider.lockSwipeToNext(true);
+        this.signupSlider.lockSwipeToPrev(true);
+    }
+
+    unlockSwipes(){
+        //unlock swiping to right or left
+        this.signupSlider.lockSwipeToNext(false);
+        this.signupSlider.lockSwipeToPrev(false);
     }
 
     addMajor(){
@@ -78,18 +89,18 @@ export class SignUpPage {
 
     next(){
         //changes slide to the next one
-        this.signupSlider.lockSwipes(false);
+        this.unlockSwipes();
         this.signupSlider.slideNext();
         this.currentFormIndex++;
-        this.signupSlider.lockSwipes(true);
+        this.lockSwipes();
     }
 
     prev(){
         //changes the slide to thep previous slide
-        this.signupSlider.lockSwipes(false);
+        this.unlockSwipes();
         this.signupSlider.slidePrev();
         this.currentFormIndex--;
-        this.signupSlider.lockSwipes(true);
+        this.lockSwipes();
     }
 
     invalidForm(){

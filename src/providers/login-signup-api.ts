@@ -24,4 +24,14 @@ export class LoginSignupApi {
               });
      });
   }
+
+  signUp(formData){
+    return new Promise(resolve => {
+      this.http.post(this.domain + 'signup', formData, {headers: this.headers})
+      .map(res => res.json())
+      .subscribe(data => {
+           resolve(data);
+      });
+    });
+  }
 }
