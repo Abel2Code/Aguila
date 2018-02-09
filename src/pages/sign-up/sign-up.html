@@ -2,6 +2,7 @@
     <ion-slides #signupSlider pager>
 
         <ion-slide>
+            <button ion-button icon-left (click)="backButton()">Login</button>
             <p> Enter Account Info </p>
             <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
             

@@ -87,6 +87,11 @@ export class SignUpPage {
         minors.push(new FormControl());
     }
 
+    backButton(){
+        //cancels registration and returns back to login page
+        this.navCtrl.pop();
+    }
+
     next(){
         //changes slide to the next one
         this.unlockSwipes();
