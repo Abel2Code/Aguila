@@ -17,6 +17,7 @@ import { LoginSignupApi } from '../providers/login-signup-api';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SignUpPage } from '../pages/sign-up/sign-up';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
     // Log In / Sign Up
     LoginPage,
+    SignUpPage,
 
     // Conversations / Messaging
     ChatroomsPage,
@@ -40,6 +42,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
     //Log In / Sign Up
     LoginPage,
+    SignUpPage,
 
     // Conversations / Messaging
     ChatroomsPage,

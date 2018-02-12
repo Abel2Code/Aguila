@@ -1,24 +1,26 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
 </ion-header>
 
-
 <ion-content padding>
-<h1>Aguila</h1>
-Join study groups, recieve help from mentors and many more
+  <h1>Aguila</h1>
+  Join study groups, recieve help from mentors and many more
+  <form [formGroup]="loginForm">
+    
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
 
-<br />
-<input type="text" [(ngModel)]="username"> <br />
-<input type="password" [(ngModel)]="password">
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+  </form>
+  <button ion-button (click)="loginButton()">Login</button>
+  <button ion-button (click)="dev()">Dev Button</button>
+  
+  <p (click)=signUpButton()>Sign Up</p>
+  <p (click)=forgotPasswordButton()>Forgot Password?</p>
 
-<button (click)="login()">Login</button>
-<p>Sign Up</p>
-
-<p>Forgot Password?</p>
 </ion-content>
