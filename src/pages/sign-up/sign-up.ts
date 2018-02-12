@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { LoginSignupApi } from '../../providers/login-signup-api';
+import { ChatroomsPage } from '../chatrooms/chatrooms';
 
 @IonicPage()
 @Component({
@@ -26,7 +28,14 @@ export class SignUpPage {
     //The boolean to activate the styling if there is an error in the form
     submitAttempt: boolean = false;
 
-    constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public alertCtrl: AlertController) {
+    //list of dropdown options
+    //majors
+    majors;
+    schools;
+    minors;
+
+    constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public alertCtrl: AlertController, public loginProvider: LoginSignupApi) {
+        this.fillDropdownOptions();
         this.slideOneForm = formBuilder.group({
             email: [''],
             phoneNumber: [''],
@@ -133,14 +142,39 @@ export class SignUpPage {
     finishButton(){
         //checks if the last slide is valid before entering the info into the database
         // and changes to the home page
-        this.submitAttempt = true;
-        if(!this.slideFourForm.valid){
-            this.invalidForm();
-        }else{
-            console.log('Successful Registration');
-            //Register into database
-            //Push into home page
-        }
+
+        // this.submitAttempt = true;
+
+        // if(!this.slideFourForm.valid){
+        //     this.invalidForm();
+        // }else{
+            let signUpForm = new FormData();
+            let fileList: any = document.getElementById('pic');
+            let fileToUpload = fileList.files[0];
+            signUpForm.set('pic' , fileToUpload);
+            signUpForm.set('email' , this.slideOneForm.value.email);
+            signUpForm.set('phoneNumber' , this.slideOneForm.value.phoneNumber);
+            signUpForm.set('password' , this.slideOneForm.value.password);
+            signUpForm.set('firstName' , this.slideThreeForm.value.firstName);
+            signUpForm.set('lastName' , this.slideThreeForm.value.lastName);
+            signUpForm.set('school' , this.slideFourForm.value.school);
+            signUpForm.set('year' , this.slideFourForm.value.year);
+            signUpForm.set('majors' , this.slideFourForm.value.majors);
+            signUpForm.set('minors' , this.slideFourForm.value.minors);
+            this.loginProvider.signUp(signUpForm).then((data)=>{
+                console.log(data);
+                this.navCtrl.push(ChatroomsPage);
+            });
+        // }
     }
 
+    fillDropdownOptions(){
+        this.loginProvider.getMajors().then((data) => {
+            this.majors=data;
+            this.minors=data;
+        })
+        this.loginProvider.getSchools().then((data) => {
+            this.schools=data;
+        })
+    }
 }

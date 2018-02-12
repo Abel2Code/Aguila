@@ -75,7 +75,7 @@
             <ion-list no-lines>
                 <form [formGroup]=slideThreeForm>
                     <ion-item>
-                        <ion-input formControlName="picture" type="file"></ion-input>
+                        <input type=file id="pic" name="pic" accept="image/*">
                     </ion-item>
                     <ion-item>
                         <ion-label floating>First Name:</ion-label>
@@ -99,8 +99,10 @@
             <ion-list no-lines>
                 <form [formGroup]=slideFourForm>
                     <ion-item>
-                        <ion-label floating>School:</ion-label>
-                        <ion-input formControlName="school" type="text"></ion-input>
+                        <ion-label>College</ion-label>
+                        <ion-select formControlName="school">
+                            <ion-option *ngFor="let college of schools" [value]="college.collegeName">{{college.collegeName}}</ion-option>  
+                        </ion-select>
                     </ion-item>
                     <ion-list radio-group formControlName="year">
                         <ion-item>
@@ -120,15 +122,24 @@
                             <ion-radio value="senior" [disabled]="isDisabled"></ion-radio>
                         </ion-item>
                     </ion-list>
+                    <ion-label>Major</ion-label>
                     <div formArrayName="majors">
                         <div *ngFor="let major of slideFourForm.get('majors').controls; index as i">
-                                <input [formControlName] = "i" placeholder="Major">
+                            <ion-item>
+                                <ion-select [formControlName] = "i">
+                                    <ion-option *ngFor="let major of majors" [value]="major.major">{{major.major}}</ion-option>  
+                                </ion-select>
+                            </ion-item>
                         </div>
                     </div>
                     <button ion-button (click)="addMajor()">Add Major</button>
                     <div formArrayName="minors">
                         <div *ngFor="let minor of slideFourForm.get('minors').controls; index as i">
-                            <input [formControlName] = "i" placeholder="Minor">
+                            <ion-item>
+                                <ion-select [formControlName] = "i">
+                                    <ion-option *ngFor="let minor of minors" [value]="minor.minor">{{minor.major}}</ion-option>  
+                                </ion-select>
+                            </ion-item>
                         </div>
                     </div>
                     <button ion-button (click)="addMinor()">Add Minor</button>

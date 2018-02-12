@@ -16,7 +16,8 @@ export class LoginPage {
   //builds the login form
   loginForm = this.formBuilder.group({
     email: ['', Validators.required],
-    password: ['', Validators.required]
+    password: ['', Validators.required],
+    profilePhoto: ['', Validators.required],
   });
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public alertCtrl: AlertController, public loginProvider: LoginSignupApi) {
@@ -53,8 +54,20 @@ export class LoginPage {
   }
 
   dev(): void{
+    console.log('dev');
     //Just a tool for me to skip to the page i want to see.
-    this.navCtrl.push(SignUpPage);
+    let form = new FormData();
+    let fileList: any = document.getElementById('pic');
+    console.log(fileList.files);
+    let fileToUpload = fileList.files[0];
+    console.log(fileToUpload);
+    form.set('pic' , fileToUpload);
+    form.set('hello', 'hello');
+    console.log(form);
+    this.loginProvider.upload(form).then(()=>{
+      console.log('here');
+    });
+    // //this.navCtrl.push(SignUpPage);
   }
 
   invalidCredentials() {
