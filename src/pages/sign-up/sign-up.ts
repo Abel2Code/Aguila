@@ -3,6 +3,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+//importing validators
+import { EmailValidator } from '../../validators/email';
+import { PasswordValidator } from '../../validators/password';
+import { PictureValidator } from '../../validators/picture';
+
 
 @IonicPage()
 @Component({
@@ -11,6 +16,12 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 })
 export class SignUpPage {
     @ViewChild('signupSlider') signupSlider: any;
+
+    onFileChange($event) {
+        let file = $event.target.files[0]; // <--- File Object for future use.
+        this.form.controls['imageInput'].setValue(file ? file.name : ''); // <-- Set Value for Validation
+   }
+   fileName = '';
 
     //Forms on each pages 
     slideOneForm: FormGroup;
@@ -27,9 +38,11 @@ export class SignUpPage {
     submitAttempt: boolean = false;
 
     constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public alertCtrl: AlertController) {
+        
+        
         this.slideOneForm = formBuilder.group({
-            email: [''],
-            phoneNumber: [''],
+            email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
+            phoneNumber: ['', Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])],
             password: [''],
             confirmPass: ['']
         });
@@ -37,15 +50,15 @@ export class SignUpPage {
         this.slideTwoForm = formBuilder.group({
             confirmationPin: [''],
         });
-
+        
         this.slideThreeForm = formBuilder.group({
-            picture: [''],
-            firstName: [''],
-            lastName: ['']
+            picture:  [''],
+            firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+            lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
         });
 
         this.slideFourForm = formBuilder.group({
-            school: [''],
+            school: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
             year: [''],
             majors: new FormArray([]),
             minors: new FormArray([])
