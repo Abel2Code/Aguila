@@ -9,15 +9,12 @@ export class LoginSignupApi {
   domain : String = "http://82f5f60b.ngrok.io/api/";
 
   constructor(public http: Http) {
-    // this.headers = new Headers();
-    // this.headers.append('Content-Type', 'application/json');
+
   }
 
-  validateCredentials(username, password){
+  validateCredentials(email, password){
       return new Promise(resolve => {
-        console.log("username" + username + "\npassword" + password)
-        let toSend = JSON.stringify({"username": username, "password": password});
-
+        let toSend = {email: email, password: password};
         this.http.post(this.domain + 'login', toSend)
               .map(res => res.json())
               .subscribe(data => {
@@ -66,4 +63,15 @@ export class LoginSignupApi {
         });
     });
   }
+
+  sendEmailPin(formData){
+    return new Promise(resolve => {
+    this.http.post(this.domain + 'test', formData)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      });
+    });
+  }
+
 }

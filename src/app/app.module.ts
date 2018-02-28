@@ -7,17 +7,16 @@ import { MyApp } from './app.component';
 
 // Log In / Sign Up
 import { LoginPage } from '../pages/login/login';
+import { SignUpPage } from '../pages/sign-up/sign-up';
 
-// Conversations / Messaging
-import { ChatroomsPage } from '../pages/chatrooms/chatrooms';
-import { ConversationPage } from '../pages/conversation/conversation';
+//Home Page
+import { HomePage } from '../pages/home/home';
 
 // Providers
 import { LoginSignupApi } from '../providers/login-signup-api';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { SignUpPage } from '../pages/sign-up/sign-up';
 
 @NgModule({
   declarations: [
@@ -27,9 +26,8 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
     LoginPage,
     SignUpPage,
 
-    // Conversations / Messaging
-    ChatroomsPage,
-    ConversationPage
+    //Home Page
+    HomePage,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +42,8 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
     LoginPage,
     SignUpPage,
 
-    // Conversations / Messaging
-    ChatroomsPage,
-    ConversationPage
+    //Home Page
+    HomePage,
   ],
   providers: [
     LoginSignupApi,

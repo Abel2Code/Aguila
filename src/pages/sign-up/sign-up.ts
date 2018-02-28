@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@ang
 
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoginSignupApi } from '../../providers/login-signup-api';
-import { ChatroomsPage } from '../chatrooms/chatrooms';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -28,17 +28,19 @@ export class SignUpPage {
     //The boolean to activate the styling if there is an error in the form
     submitAttempt: boolean = false;
 
-    //list of dropdown options
-    //majors
-    majors;
-    schools;
-    minors;
+    // //list of dropdown options
+    // //majors
+    // majors;
+    // schools;
+    // minors;
 
-    constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public alertCtrl: AlertController, public loginProvider: LoginSignupApi) {
-        this.fillDropdownOptions();
+    //checks if email Pin is already sent
+    pinSent = false;
+
+    constructor(private navCtrl: NavController, private formBuilder: FormBuilder, private alertCtrl: AlertController, private loginProvider: LoginSignupApi) {
         this.slideOneForm = formBuilder.group({
             email: [''],
-            phoneNumber: [''],
+            //phoneNumber: [''],
             password: [''],
             confirmPass: ['']
         });
@@ -48,7 +50,7 @@ export class SignUpPage {
         });
 
         this.slideThreeForm = formBuilder.group({
-            picture: [''],
+            //picture: [''],
             firstName: [''],
             lastName: ['']
         });
@@ -56,8 +58,9 @@ export class SignUpPage {
         this.slideFourForm = formBuilder.group({
             school: [''],
             year: [''],
-            majors: new FormArray([]),
-            minors: new FormArray([])
+            shareInfo: ['']
+            // majors: new FormArray([]),
+            // minors: new FormArray([])
         });
 
         this.signUpForms = [this.slideOneForm, this.slideTwoForm, this.slideThreeForm, this.slideFourForm];
@@ -134,6 +137,9 @@ export class SignUpPage {
         if (!currentPage.valid){
             this.invalidForm();
         }else{
+            if(this.currentFormIndex == 0){
+                this.sendPin();
+            }
             this.submitAttempt = false;
             this.next();
         }
@@ -148,33 +154,53 @@ export class SignUpPage {
         // if(!this.slideFourForm.valid){
         //     this.invalidForm();
         // }else{
-            let signUpForm = new FormData();
-            let fileList: any = document.getElementById('pic');
-            let fileToUpload = fileList.files[0];
-            signUpForm.set('pic' , fileToUpload);
-            signUpForm.set('email' , this.slideOneForm.value.email);
-            signUpForm.set('phoneNumber' , this.slideOneForm.value.phoneNumber);
-            signUpForm.set('password' , this.slideOneForm.value.password);
-            signUpForm.set('firstName' , this.slideThreeForm.value.firstName);
-            signUpForm.set('lastName' , this.slideThreeForm.value.lastName);
-            signUpForm.set('school' , this.slideFourForm.value.school);
-            signUpForm.set('year' , this.slideFourForm.value.year);
-            signUpForm.set('majors' , this.slideFourForm.value.majors);
-            signUpForm.set('minors' , this.slideFourForm.value.minors);
+            // let signUpForm = new FormData();
+            // let fileList: any = document.getElementById('pic');
+            // let fileToUpload = fileList.files[0];
+            // signUpForm.set('pic' , fileToUpload);
+            // signUpForm.set('email' , this.slideOneForm.value.email);
+            // signUpForm.set('phoneNumber' , this.slideOneForm.value.phoneNumber);
+            // signUpForm.set('password' , this.slideOneForm.value.password);
+            // signUpForm.set('firstName' , this.slideThreeForm.value.firstName);
+            // signUpForm.set('lastName' , this.slideThreeForm.value.lastName);
+            // signUpForm.set('school' , this.slideFourForm.value.school);
+            // signUpForm.set('year' , this.slideFourForm.value.year);
+            // signUpForm.set('majors' , this.slideFourForm.value.majors);
+            // signUpForm.set('minors' , this.slideFourForm.value.minors);
+            let signUpForm  = {
+                email: this.slideOneForm.value.email,
+                password: this.slideOneForm.value.passowrd,
+                firstName: this.slideOneForm.value.firstName,
+                lastName: this.slideOneForm.value.lastName,
+                school: this.slideOneForm.value.school,
+                year: this.slideOneForm.value.year,
+                shareInfo: this.slideOneForm.value.shareInfo
+            }
             this.loginProvider.signUp(signUpForm).then((data)=>{
                 console.log(data);
-                this.navCtrl.push(ChatroomsPage);
+                this.navCtrl.push(HomePage);
             });
         // }
     }
 
-    fillDropdownOptions(){
-        this.loginProvider.getMajors().then((data) => {
-            this.majors=data;
-            this.minors=data;
-        })
-        this.loginProvider.getSchools().then((data) => {
-            this.schools=data;
-        })
+    // fillDropdownOptions(){
+    //     this.loginProvider.getMajors().then((data) => {
+    //         this.majors=data;
+    //         this.minors=data;
+    //     })
+    //     this.loginProvider.getSchools().then((data) => {
+    //         this.schools=data;
+    //     })
+    // }
+
+    sendPin(){
+        if (this.pinSent == false){
+            let email = new FormData();
+            email.set('email', this.slideOneForm.value.email);
+            this.loginProvider.sendEmailPin(email).then((data) => {
+                this.pinSent = true;
+                console.log(data);
+            })
+        }
     }
 }

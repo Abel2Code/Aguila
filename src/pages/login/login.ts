@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MenuController } from 'ionic-angular';
 
 import { LoginSignupApi } from '../../providers/login-signup-api';
 
-import { ChatroomsPage } from '../chatrooms/chatrooms';
 import { SignUpPage } from '../sign-up/sign-up';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -16,16 +17,23 @@ export class LoginPage {
   //builds the login form
   loginForm = this.formBuilder.group({
     email: ['', Validators.required],
-    password: ['', Validators.required],
-    profilePhoto: ['', Validators.required],
+    password: ['', Validators.required]
   });
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public alertCtrl: AlertController, public loginProvider: LoginSignupApi) {
+  constructor(private navCtrl : NavController, private navParams : NavParams, private formBuilder : FormBuilder, private alertCtrl : AlertController, private loginProvider : LoginSignupApi, private menuCtrl : MenuController) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  ionViewWillEnter(){
+    this.menuCtrl.swipeEnable(false);
+  }
+
+  ionViewWillLeave(){
+    this.menuCtrl.swipeEnable(true);
   }
 
   loginButton() {
@@ -41,33 +49,14 @@ export class LoginPage {
   login(): void{
     // Give username and password to server
     this.loginProvider.validateCredentials(this.loginForm.value.email, this.loginForm.value.password).then((data) =>{
-      console.log("Data:");
       console.log(data);
-      // this.navCtrl.setRoot(ChatroomsPage);
+      this.navCtrl.push(HomePage);
     });
-    console.log(this.loginForm.value.email + "\n" + this.loginForm.value.password);
-    // On error, tell the user its invalid with styles
-    // If valid,
-    // Store token in local storage
-
-    // Push to conversations page
   }
 
   dev(): void{
     console.log('dev');
-    //Just a tool for me to skip to the page i want to see.
-    let form = new FormData();
-    let fileList: any = document.getElementById('pic');
-    console.log(fileList.files);
-    let fileToUpload = fileList.files[0];
-    console.log(fileToUpload);
-    form.set('pic' , fileToUpload);
-    form.set('hello', 'hello');
-    console.log(form);
-    this.loginProvider.upload(form).then(()=>{
-      console.log('here');
-    });
-    // //this.navCtrl.push(SignUpPage);
+    this.navCtrl.push(HomePage);
   }
 
   invalidCredentials() {
@@ -85,8 +74,8 @@ export class LoginPage {
   }
 
   forgotPasswordButton(){
-    //pushes to the foget password page
-
+    //pushes to the forget password page
+    
   }
 
 }

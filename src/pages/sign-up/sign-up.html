@@ -20,14 +20,14 @@
                         <p>Please enter a valid email.</p>
                     </ion-item>
 
-                    <ion-item>
+                    <!-- <ion-item>
                         <ion-label floating>Phone Number:</ion-label>
                         <ion-input formControlName="phoneNumber" type="tel" [class.invalid]="!slideOneForm.controls.phoneNumber.valid && (slideOneForm.controls.phoneNumber.dirty || submitAttempt)"></ion-input>
                     </ion-item>
                     
                     <ion-item *ngIf="!slideOneForm.controls.phoneNumber.valid  && (slideOneForm.controls.phoneNumber.dirty || submitAttempt)">
                         <p>Please enter a valid phone number. 10 digits with no spaces.</p>
-                    </ion-item>
+                    </ion-item> -->
 
                     <ion-item>
                         <ion-label floating>Password:</ion-label>
@@ -70,13 +70,13 @@
             <button ion-button icon-left (click)="prev()"><ion-icon name="arrow-back"></ion-icon> Prev</button>
             <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
     
-            <p>Enter your name and upload a picture here.</p>
-            <p>Keep in mind that other users and mentors alike will be a ble to see your picture</p>
+            <!-- <p>Enter your name and upload a picture here.</p>
+            <p>Keep in mind that other users and mentors alike will be a ble to see your picture</p> -->
             <ion-list no-lines>
                 <form [formGroup]=slideThreeForm>
-                    <ion-item>
+                    <!-- <ion-item>
                         <input type=file id="pic" name="pic" accept="image/*">
-                    </ion-item>
+                    </ion-item> -->
                     <ion-item>
                         <ion-label floating>First Name:</ion-label>
                         <ion-input formControlName="firstName" type="text"></ion-input>
@@ -99,10 +99,8 @@
             <ion-list no-lines>
                 <form [formGroup]=slideFourForm>
                     <ion-item>
-                        <ion-label>College</ion-label>
-                        <ion-select formControlName="school">
-                            <ion-option *ngFor="let college of schools" [value]="college.collegeName">{{college.collegeName}}</ion-option>  
-                        </ion-select>
+                        <ion-label floating>College:</ion-label>
+                        <ion-input formControlName="school" type="text"></ion-input>
                     </ion-item>
                     <ion-list radio-group formControlName="year">
                         <ion-item>
@@ -122,7 +120,11 @@
                             <ion-radio value="senior" [disabled]="isDisabled"></ion-radio>
                         </ion-item>
                     </ion-list>
-                    <ion-label>Major</ion-label>
+                    <ion-item>
+                        <ion-label>Share the info with other users?</ion-label>
+                        <ion-checkbox formControlName="shareInfo"></ion-checkbox>
+                    </ion-item>
+                    <!-- <ion-label>Major</ion-label>
                     <div formArrayName="majors">
                         <div *ngFor="let major of slideFourForm.get('majors').controls; index as i">
                             <ion-item>
@@ -142,7 +144,7 @@
                             </ion-item>
                         </div>
                     </div>
-                    <button ion-button (click)="addMinor()">Add Minor</button>
+                    <button ion-button (click)="addMinor()">Add Minor</button> -->
                 </form>
                 <button ion-button (click)="finishButton()"> Finish</button>
             </ion-list>
