@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Ask a Question</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<form [formGroup]="questionForm">
+  <ion-input placeholder="Title..." formControlName="title"></ion-input>
+  <textarea placeholder="Body..." formControlName="body"></textarea>
+</form>
+<button ion-button (click)="submit()">Send</button>
+</ion-content>

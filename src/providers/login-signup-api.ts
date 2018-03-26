@@ -4,9 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LoginSignupApi {
-  headers: Headers;
-  // domain : String = "http://localhost:3000/api/";
-  domain : String = "http://82f5f60b.ngrok.io/api/";
+  domain : String = " http://4786bdab.ngrok.io/api/";
 
   constructor(public http: Http) {
 
@@ -16,10 +14,10 @@ export class LoginSignupApi {
       return new Promise(resolve => {
         let toSend = {email: email, password: password};
         this.http.post(this.domain + 'login', toSend)
-              .map(res => res.json())
-              .subscribe(data => {
-                  resolve(data);
-              });
+          .map(res => res.json())
+          .subscribe(data => {
+              resolve(data);
+          });
      });
   }
 
@@ -33,10 +31,9 @@ export class LoginSignupApi {
     });
   }
 
-  //upload test
-  upload(formData){
+  sendEmailPin(email){
     return new Promise(resolve => {
-    this.http.post(this.domain + 'test', formData)
+    this.http.post(this.domain + 'email_request', email)
       .map(res => res.json())
       .subscribe(data => {
         resolve(data);
@@ -44,29 +41,9 @@ export class LoginSignupApi {
     });
   }
 
-  getMajors(){
+  checkValidationPin(data){
     return new Promise(resolve => {
-      this.http.get(this.domain + 'majors')
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        });
-      });
-  }
-
-  getSchools(){
-    return new Promise(resolve => {
-      this.http.get(this.domain + 'schools')
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        });
-    });
-  }
-
-  sendEmailPin(formData){
-    return new Promise(resolve => {
-    this.http.post(this.domain + 'test', formData)
+      this.http.post(this.domain + 'validate_pin', data)
       .map(res => res.json())
       .subscribe(data => {
         resolve(data);

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
@@ -17,33 +18,35 @@ import { LoginSignupApi } from '../providers/login-signup-api';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { MessagePage } from '../pages/message/message';
+import { RewardsPage } from '../pages/rewards/rewards';
+import { QuestionPage } from '../pages/question/question';
 
 @NgModule({
   declarations: [
     MyApp,
-
-    // Log In / Sign Up
     LoginPage,
     SignUpPage,
-
-    //Home Page
     HomePage,
+    MessagePage,
+    RewardsPage,
+    QuestionPage,
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {tabsPlacement: 'top'}),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-
-    //Log In / Sign Up
     LoginPage,
     SignUpPage,
-
-    //Home Page
     HomePage,
+    MessagePage,
+    RewardsPage,
+    QuestionPage,
   ],
   providers: [
     LoginSignupApi,

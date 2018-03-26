@@ -7,6 +7,10 @@ import { LoginSignupApi } from '../../providers/login-signup-api';
 
 import { SignUpPage } from '../sign-up/sign-up';
 import { HomePage } from '../home/home';
+import { QuestionPage } from '../question/question';
+
+import { Storage } from '@ionic/storage';
+
 
 @IonicPage()
 @Component({
@@ -20,8 +24,8 @@ export class LoginPage {
     password: ['', Validators.required]
   });
 
-  constructor(private navCtrl : NavController, private navParams : NavParams, private formBuilder : FormBuilder, private alertCtrl : AlertController, private loginProvider : LoginSignupApi, private menuCtrl : MenuController) {
-
+  constructor(private navCtrl : NavController, private navParams : NavParams, private formBuilder : FormBuilder, private alertCtrl : AlertController, private loginProvider : LoginSignupApi, private menuCtrl : MenuController, private storage: Storage) {
+    
   }
 
   ionViewDidLoad() {
@@ -48,15 +52,14 @@ export class LoginPage {
 
   login(): void{
     // Give username and password to server
-    this.loginProvider.validateCredentials(this.loginForm.value.email, this.loginForm.value.password).then((data) =>{
-      console.log(data);
-      this.navCtrl.push(HomePage);
+    this.loginProvider.validateCredentials(this.loginForm.value.email, this.loginForm.value.password).then((data : any) =>{
+      if (data.valid == 1 ){
+        this.storage.set('token', data.token);
+        this.navCtrl.push(HomePage);
+      }else{
+        this.invalidCredentials();
+      }
     });
-  }
-
-  dev(): void{
-    console.log('dev');
-    this.navCtrl.push(HomePage);
   }
 
   invalidCredentials() {
@@ -71,6 +74,11 @@ export class LoginPage {
   signUpButton(){
     //sign up button that pushes to the sign up page
     this.navCtrl.push(SignUpPage);
+  }
+
+  dev(): void{
+    console.log('dev');
+    this.navCtrl.push(HomePage  );
   }
 
   forgotPasswordButton(){
