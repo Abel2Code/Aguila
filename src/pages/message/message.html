@@ -14,5 +14,31 @@
 
 
 <ion-content padding>
-  Hello
+  <div style="overflow: scroll; height: 80%">
+    <div *ngFor="let data of messages">
+         <ion-item *ngIf="data.isMentor" style="border-right: solid 5px red;">
+          <p class="chat-text" item-left>
+            <strong >James: </strong>
+            {{data.message}}
+          </p>
+        </ion-item>
+        <ion-item *ngIf="!data.isMentor" style="border-right: solid 5px green;">
+          <p class="chat-text" item-left>
+            <strong >Abel: </strong>
+            {{data.message}}
+          </p>
+        </ion-item>
+       </div>
+    </div>
+
+     <div id="input">
+                <div style="display: flex">
+                  <ion-row>
+                  <input style="font-size:18px;border-radius:15px;width:200px;border-style: groove;"
+                  type="text" [(ngModel)]="messageData">
+                <ion-icon style="width: 32px; height: 32px;margin-left: 13px;" item-right name="arrow-round-up" (click)="addMessage()">
+                </ion-icon>
+                  </ion-row>
+                </div>
+          </div>
 </ion-content>

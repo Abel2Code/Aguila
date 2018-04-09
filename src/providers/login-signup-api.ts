@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LoginSignupApi {
-  domain : String = " http://4786bdab.ngrok.io/api/";
+  domain : String = " http://localhost:3000/api/";
 
   constructor(public http: Http) {
 
@@ -44,6 +44,27 @@ export class LoginSignupApi {
   checkValidationPin(data){
     return new Promise(resolve => {
       this.http.post(this.domain + 'validate_pin', data)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      });
+    });
+  }
+
+  postQuestion(data, token){
+    console.log(token);
+    return new Promise(resolve => {
+      this.http.post(this.domain + 'postQuestion', data)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      });
+    });
+  }
+
+  getAskerConversations(author){
+    return new Promise(resolve => {
+      this.http.get(this.domain + 'conversations/' + author)
       .map(res => res.json())
       .subscribe(data => {
         resolve(data);

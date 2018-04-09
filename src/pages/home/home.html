@@ -1,5 +1,52 @@
-<ion-tabs tabsLayout="title-hide">
-  <ion-tab tabIcon="call" [root]="tabOne" tabBadge="3" tabBadgeStyle="danger"></ion-tab>
-  <ion-tab tabIcon="chatbubbles" [root]="tabTwo" tabBadge="14" tabBadgeStyle="danger"></ion-tab>
-  <ion-tab tabIcon="musical-notes" [root]="tabThree"></ion-tab>
-</ion-tabs>
+<ion-header>
+
+</ion-header>
+
+<ion-content padding style="background-color: #e7f0f4">
+  <h1 style="text-align: center">Home</h1>
+  <img src="http://ec.nahad.ir/uploads/default-user.png" style="width: 30%; margin-left: auto; margin-right: auto; display: block;"/>
+  <h3 style="text-align: center;">Student Name</h3>
+  <h4 style="text-align: center;">University of Southern California</h4>
+
+  <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1em;">
+    <img src="http://sweetclipart.com/multisite/sweetclipart/files/imagecache/middle/suitcase_line_art.png" (click)="changeLayout(0)" style=" height: 4em; padding-right: 3%;border-right: 2px solid gray;"/>
+    <img src="https://vignette.wikia.nocookie.net/r2da/images/8/8c/Points-Icon-700px.png/revision/latest?cb=20161120085917" (click)="changeLayout(1)" style=" height: 4em; padding-left: 3%; padding-right: 3%; border-right: 2px solid gray;"/>
+    <img src="https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/storm-0914-icon-mail-50_SB_PM.jpg" (click)="changeLayout(2)" style="height: 4em; padding-left: 3%;"/>
+  </div>
+
+  <div id="ask_question" *ngIf="layout === 'question'">
+    <table>
+      <tr style="height: 2em;">
+        <td>Title:</td>
+        <td><input type="text" [(ngModel)]="this.title"/></td>
+      </tr>
+      <tr >
+        <td>Description:</td>
+        <td><textarea [(ngModel)]="this.description"></textarea></td>
+      </tr>
+      <tr style="height: 2em;">
+        <td><button (click)="submitToJobBoard()">Send</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="points" *ngIf="layout === 'points'">
+    <img src="https://mcdonalds.co.nz/sites/mcdonalds.co.nz/files/hero_hungerbusters_bigmac_0.png" style="width: 50%;"/> | 12 points
+  </div>
+
+  <div id="inbox" *ngIf="layout === 'inbox'">
+    <div *ngIf="conversations.length === 0">
+      <h3>No Replies Yet :|</h3>
+    </div>
+    <div *ngIf="conversations.length != 0">
+      <div *ngFor="let conversation of conversations" style="border-color: black;" (click)="openMessage(conversation)">
+        <h2> {{conversation.title}} </h2>
+        <h4> {{conversation.description}} </h4>
+        <h6> You have been Matched! </h6>
+      </div>
+    </div>
+
+  </div>
+
+
+</ion-content>

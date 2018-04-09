@@ -2,24 +2,24 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content id="content" padding>
   <h1>Aguila</h1>
   Join study groups, recieve help from mentors and many more
   <form [formGroup]="loginForm">
-    
+
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
+      <ion-input type="text" formControlName="email" value="a@a.b"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-input type="password" formControlName="password" value="12345"></ion-input>
     </ion-item>
   </form>
   <button ion-button (click)="loginButton()">Login</button>
   <button ion-button (click)="dev()">Dev Button</button>
-  
+
   <p (click)=signUpButton()>Sign Up</p>
   <p (click)=forgotPasswordButton()>Forgot Password?</p>
 

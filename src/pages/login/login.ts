@@ -25,7 +25,7 @@ export class LoginPage {
   });
 
   constructor(private navCtrl : NavController, private navParams : NavParams, private formBuilder : FormBuilder, private alertCtrl : AlertController, private loginProvider : LoginSignupApi, private menuCtrl : MenuController, private storage: Storage) {
-    
+
   }
 
   ionViewDidLoad() {
@@ -52,11 +52,14 @@ export class LoginPage {
 
   login(): void{
     // Give username and password to server
-    this.loginProvider.validateCredentials(this.loginForm.value.email, this.loginForm.value.password).then((data : any) =>{
+    // this.loginProvider.validateCredentials(this.loginForm.value.email, this.loginForm.value.password).then((data : any) =>{
+    this.loginProvider.validateCredentials("a@a.b","12345").then((data : any) =>{
       if (data.valid == 1 ){
         this.storage.set('token', data.token);
+        this.storage.set('id', data.id);
         this.navCtrl.push(HomePage);
       }else{
+        console.log(data)
         this.invalidCredentials();
       }
     });
@@ -83,7 +86,7 @@ export class LoginPage {
 
   forgotPasswordButton(){
     //pushes to the forget password page
-    
+
   }
 
 }
