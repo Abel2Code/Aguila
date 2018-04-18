@@ -1,8 +1,31 @@
 page-login {
-// background-color: green;
+  .scroll-content {
+      overflow: hidden;
+    }
+
 }
 
 #content {
-  background-image: url('../../assets/imgs/aguilaLoginPage.png');
-  background-size: 100%;
+  background-color: #2980b8;
+  text-align: center;
+}
+
+ion-input {
+  background-color: white;
+  border-radius: 5px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  width: 70%;
+  padding: 0.5em;
+  font-size: 1.5em;
+  background-color: white;
+  border-radius: 5px;
+}
+
+p{
+  color: #d8e7f0;
 }

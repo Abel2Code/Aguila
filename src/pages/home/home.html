@@ -2,36 +2,57 @@
 
 </ion-header>
 
-<ion-content padding style="background-color: #e7f0f4">
-  <h1 style="text-align: center">Home</h1>
-  <img src="http://ec.nahad.ir/uploads/default-user.png" style="width: 30%; margin-left: auto; margin-right: auto; display: block;"/>
-  <h3 style="text-align: center;">Student Name</h3>
-  <h4 style="text-align: center;">University of Southern California</h4>
+<ion-content style="background-color: #e7f0f4">
+  <img id="background-USC" src="http://viterbivoices.usc.edu/wp-content/uploads/2017/08/USC.jpg">
+  <div id="color-over-image"></div>
+    <p id="header" style="text-align: center">&nbsp;&nbsp;&nbsp;&nbsp; Home     <ion-icon name="log-out" style="color: white; float: right;"></ion-icon></p>
+
+  <div id="student-info-box"></div>
+
+  <img src="../../assets/imgs/defaultProfile.png" style="width: 22%; margin-left: auto; margin-right: auto; display: block;"/>
+  <p id="student-name" style="text-align: center; color: black;">Student Name</p>
+  <p id="student-univ" style="text-align: center; color: black;">University of Southern California</p>
 
   <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1em;">
-    <img src="http://sweetclipart.com/multisite/sweetclipart/files/imagecache/middle/suitcase_line_art.png" (click)="changeLayout(0)" style=" height: 4em; padding-right: 3%;border-right: 2px solid gray;"/>
-    <img src="https://vignette.wikia.nocookie.net/r2da/images/8/8c/Points-Icon-700px.png/revision/latest?cb=20161120085917" (click)="changeLayout(1)" style=" height: 4em; padding-left: 3%; padding-right: 3%; border-right: 2px solid gray;"/>
-    <img src="https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/storm-0914-icon-mail-50_SB_PM.jpg" (click)="changeLayout(2)" style="height: 4em; padding-left: 3%;"/>
+    <img class="menu-option" src="../../assets/imgs/luggage.png" (click)="changeLayout(0)" style=" height: 2.5em; padding-right: 6%;"/>
+    <img class="menu-option" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" style=" height: 4em; padding-left: 6%; padding-right: 6%; border-right: 2px solid gray; border-left: 2px solid gray;"/>
+    <img class="menu-option" src="../../assets/imgs/envelope.png" (click)="changeLayout(2)" style="height: 2.5em; padding-left: 6%;"/>
   </div>
 
   <div id="ask_question" *ngIf="layout === 'question'">
     <table>
       <tr style="height: 2em;">
         <td>Title:</td>
-        <td><input type="text" [(ngModel)]="this.title"/></td>
+        <td><input style="border-radius: 5px" type="text" [(ngModel)]="this.title"/></td>
       </tr>
       <tr >
         <td>Description:</td>
-        <td><textarea [(ngModel)]="this.description"></textarea></td>
+        <td><textarea style="border-radius: 5px;" [(ngModel)]="this.description" rows="5"></textarea></td>
       </tr>
       <tr style="height: 2em;">
-        <td><button (click)="submitToJobBoard()">Send</button></td>
+        <td colspan="2"><button id="send_question" (click)="submitToJobBoard()">Send</button></td>
       </tr>
     </table>
   </div>
 
   <div id="points" *ngIf="layout === 'points'">
-    <img src="https://mcdonalds.co.nz/sites/mcdonalds.co.nz/files/hero_hungerbusters_bigmac_0.png" style="width: 50%;"/> | 12 points
+    <table id="shop">
+      <tr class="flex-container">
+        <td style="padding-right: 20px; padding-bottom: 5px;"><img class="menu-option" src="../../assets/imgs/comboMeal.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
+        <td style="width: 2px; background-color: #BBB"></td>
+        <td style="padding-left: 20px"><img class="menu-option" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
+      </tr>
+      <tr class="flex-container">
+        <td style="padding-right: 20px; padding-bottom: 5px;"><img class="menu-option" src="../../assets/imgs/comboMeal.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
+        <td style="width: 2px; background-color: #BBB"></td>
+        <td style="padding-left: 20px"><img class="menu-option" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
+      </tr>
+      <tr class="flex-container">
+        <td style="padding-right: 20px;  padding-bottom: 5px;"><img class="menu-option" src="../../assets/imgs/comboMeal.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
+        <td style="width: 2px; background-color: #BBB"></td>
+        <td style="padding-left: 20px"><img class="menu-option" src="../../assets/imgs/collectButton.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
+      </tr>
+    </table>
   </div>
 
   <div id="inbox" *ngIf="layout === 'inbox'">
@@ -40,9 +61,10 @@
     </div>
     <div *ngIf="conversations.length != 0">
       <div *ngFor="let conversation of conversations" style="border-color: black;" (click)="openMessage(conversation)">
-        <h2> {{conversation.title}} </h2>
-        <h4> {{conversation.description}} </h4>
-        <h6> You have been Matched! </h6>
+        <ion-card id="card" style="border-radius: 5px; padding: 0.5em;">
+          <p class="conversation-title" style="font-weight: bold; font-size: 18px;"> {{conversation.title}} </p>
+          <p class="conversation-description" style="font-size: 12px;"> &nbsp; &nbsp; {{conversation.description}} </p>
+        </ion-card>
       </div>
     </div>
 

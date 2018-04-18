@@ -83,7 +83,8 @@ export class HomePage {
 
   getConversations(){
     this.loginProvider.getAskerConversations(this.id).then((data: any)=>{
-      this.conversations = data;
+      console.log(data);
+      this.conversations = data.reverse();
     });
   }
 

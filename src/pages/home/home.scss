@@ -1,3 +1,93 @@
 page-home {
+  .scroll-content {
+      overflow: hidden;
+    }
+    
+    #background-USC {
+      position:absolute;
+      z-index:-3;
+      width: 100%;
+    }
+
+    #color-over-image {
+      position: absolute;
+      z-index: -2;
+      background-color: #17243d;
+      height: 196px;
+      width: 100%;
+      opacity: 0.7;
+    }
+
+    #header {
+      color: #d7dee4;
+      font-size: 1.1em;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+
+    p {
+      color: black;
+    }
+
+    #student-info-box {
+      position: absolute;
+      z-index: -2;
+      background-color: white;
+      height: 170px;
+      width: 90%;
+      margin-left: 1.2em;
+      margin-top: 1.7em;
+      border-radius: 10px;
+    }
+
+    #student-name {
+      font-size: 1em;
+      padding: 0px;
+      margin-bottom: 0px;
+    }
+
+    #student-univ {
+      font-size: 0.8em;
+      font-weight: 500;
+      padding: 0px;
+      margin-top: 0px;
+    }
+
+    #ask_question {
+      background-color: white;
+      border-radius: 10px;
+      margin-left: 1.2em;
+      margin-top: 2em;
+      padding: 1em;
+      width: 90%;
+    }
+
+    #send_question {
+      background-color: #1988ab;
+      color: #EEE;
+      padding: 4px;
+      margin-top: 5px;
+      margin-left: 24%;
+    }
+
+    #inbox {
+      margin-top: 2em;
+      width: 90%;
+      margin-left: 1.2em;
+    }
+
+    #points {
+      background-color: white;
+      border-radius: 10px;
+      margin-left: 1.2em;
+      margin-top: 2em;
+      padding: 1em;
+      width: 90%;
+    }
+
+    #shop {
+      margin-left: auto;
+      margin-right:auto;
+    }
 
 }

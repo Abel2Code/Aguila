@@ -33,10 +33,25 @@ export class MessagePage {
     });
     this.messageData = "";
 
+    setTimeout(()=>this.pushCustomReply(),1500)
+
+
+  }
+
+  pushCustomReply(){
     this.messages.push({
       isMentor: true,
       message: "Happy to help. Let me know if my advice resolves the issue."
-    })
+    });
+    console.log(this.messages);
+  }
+
+  scrollToBottom(){
+    
+  }
+
+  goBack(){
+    this.navCtrl.pop();
   }
 
 }
