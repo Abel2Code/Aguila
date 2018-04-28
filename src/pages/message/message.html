@@ -5,21 +5,19 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <div id="nav">
-    <img src="../../assets/imgs/backArrow.png" style="height: 50%;" (click)="goBack();"/>
-    <p> James </p>
-    <p style="height: 1px; width: 10px;"></p>
+  <div>
+    <img src="../../assets/imgs/backArrow.png" style="height: 40%; position: absolute;" (click)="goBack();"/>
+    <p id="others-name">James</p>
   </div>
 </ion-header>
 
 
 <ion-content padding>
-  <div style="height: 100%;">
-    <div style="overflow: scroll; height: 90%">
+    <div style="overflow: scroll; height: 100%; margin: 0px;">
       <div *ngFor="let data of messages">
            <ion-item *ngIf="data.isMentor" no-lines>
             <div class="chat-text" item-left>
-              <div style="margin-left: 15%;"><p>James: </p> </div>
+              <div style="margin-left: 15%;"><p>James</p> </div>
               <div style="display: flex">
                 <img src="../../assets/imgs/defaultProfile.png" style="height:1.5em; margin-right: 5px;"/>
                 <p class="other-sent message">{{data.message}}</p>
@@ -41,5 +39,4 @@
             </ion-icon>
         </div>
     </div>
-  </div>
 </ion-content>

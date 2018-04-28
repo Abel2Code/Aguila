@@ -12,6 +12,7 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
 
 //Home Page
 import { HomePage } from '../pages/home/home';
+import { HomeMentorPage } from '../pages/home-mentor/home-mentor';
 
 // Providers
 import { LoginSignupApi } from '../providers/login-signup-api';
@@ -31,6 +32,7 @@ import { QuestionPage } from '../pages/question/question';
     MessagePage,
     RewardsPage,
     QuestionPage,
+    HomeMentorPage
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,7 @@ import { QuestionPage } from '../pages/question/question';
     MessagePage,
     RewardsPage,
     QuestionPage,
+    HomeMentorPage
   ],
   providers: [
     LoginSignupApi,

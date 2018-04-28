@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { MessagePage } from '../pages/message/message';
 import { RewardsPage } from '../pages/rewards/rewards';
+import { HomeMentorPage } from '../pages/home-mentor/home-mentor';
 
 @Component({
   templateUrl: 'app.html'
