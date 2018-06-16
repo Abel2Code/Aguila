@@ -7,6 +7,7 @@ import { LoginSignupApi } from '../../providers/login-signup-api';
 
 import { SignUpPage } from '../sign-up/sign-up';
 import { HomePage } from '../home/home';
+import { HomeMentorPage } from '../home-mentor/home-mentor';
 import { QuestionPage } from '../question/question';
 
 import { Storage } from '@ionic/storage';
@@ -52,13 +53,23 @@ export class LoginPage {
 
   login(): void{
     // Give username and password to server
-    // this.loginProvider.validateCredentials(this.loginForm.value.email, this.loginForm.value.password).then((data : any) =>{
-    this.loginProvider.validateCredentials("a@a.b","12345").then((data : any) =>{
-      if (data.valid == 1 ){
-        this.storage.set('token', data.token);
-        this.storage.set('id', data.id);
-        this.navCtrl.push(HomePage);
-      }else{
+    this.loginProvider.validateCredentials(this.loginForm.value.email, this.loginForm.value.password).then((data : any) =>{
+    // this.loginProvider.validateCredentials("a@a.b","12345").then((data : any) =>{
+      if (data.valid == 1){
+        this.storage.set('token', data.token).then((a: any) => {
+          this.storage.set('id', data.id).then((b: any) => {
+            this.navCtrl.push(HomePage);
+          });
+          console.log("NonMentorId : " + data.id);
+        });
+      }else if (data.valid == 2){
+        this.storage.set('token', data.token).then((a:any)=> {
+          this.storage.set('id', data.id).then((b: any) => {
+            this.navCtrl.push(HomeMentorPage);
+          });
+          console.log("MentorId : " + data.id);
+        });
+      } else {
         console.log(data)
         this.invalidCredentials();
       }

@@ -27,7 +27,9 @@ export class HomePage {
     this.changeLayout(0);
     this.storage.get('id').then((data : any) =>{
       this.id = data;
+      console.log(this.id);
     }).then(()=>this.getConversations());
+
 
     this.storage.get('token').then((data : any) =>{
       this.token = data;

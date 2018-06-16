@@ -64,11 +64,52 @@ export class LoginSignupApi {
 
   getAskerConversations(author){
     return new Promise(resolve => {
-      this.http.get(this.domain + 'conversations/' + author)
+      this.http.get(this.domain + 'conversations_a/' + author)
       .map(res => res.json())
       .subscribe(data => {
         resolve(data);
       });
+    });
+  }
+
+  getMentorConversations(author){
+    return new Promise(resolve => {
+      this.http.get(this.domain + 'conversations_m/' + author)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      });
+    });
+  }
+
+  getUnansweredJobs(){
+    return new Promise(resolve => {
+      this.http.get(this.domain + '/unansweredJobs')  .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        });;
+    });
+  }
+
+  jobMatch(job_id, mentor_id){
+    return new Promise(resolve => {
+      let toSend = {id: job_id, mentorId: mentor_id};
+      this.http.put(this.domain + 'jobMatch', toSend)
+        .map(res => res.json())
+        .subscribe(data => {
+            resolve(data);
+        });
+    });
+  }
+
+  startConversation(job_id, m_description, m_response){
+    return new Promise(resolve => {
+      let toSend = {id: job_id, description: m_description, response: m_response};
+      this.http.put(this.domain + 'startConversation', toSend)
+        .map(res => res.json())
+        .subscribe(data => {
+            resolve(data);
+        });
     });
   }
 
