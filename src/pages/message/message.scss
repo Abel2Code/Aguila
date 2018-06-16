@@ -1,3 +1,68 @@
 page-message {
+  .toolbar-background {
+    background-color: #1989ac;
+  }
+
+  ion-header {
+    height: 9%;
+    width: 100%;
+    background-color: #1989ac;
+  }
+
+  ion-item{
+    padding-left: 0px !important;
+  }
+
+  #others-name {
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+  .vertical-flex {
+    display: flex;
+  }
+
+  .user-sent {
+    background-color: #4080ff;
+    margin-left: 2em;
+    color: white;
+  }
+
+  .other-sent {
+    background-color: #e8f1f5;
+    color: black;
+  }
+
+  .message {
+    padding: 0.5em;
+    border-radius: 5px;
+  }
+
+  .chat-text-user {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .ion-item {
+    border: 0px solid green;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+  }
+
+  #input {
+    height: 1.8em;
+    width:100%;
+    position: fixed;
+    bottom: 1em;
+    padding-top:0.3em;
+    background-color: white;
+  }
+
+  .scroll-content {
+    margin-top: 9% !important;
+  }
 
 }

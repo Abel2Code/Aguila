@@ -12,6 +12,7 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
 
 //Home Page
 import { HomePage } from '../pages/home/home';
+import { HomeMentorPage } from '../pages/home-mentor/home-mentor';
 
 // Providers
 import { LoginSignupApi } from '../providers/login-signup-api';
@@ -21,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MessagePage } from '../pages/message/message';
 import { RewardsPage } from '../pages/rewards/rewards';
 import { QuestionPage } from '../pages/question/question';
+import { ViewJobPage } from '../pages/view-job/view-job';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { QuestionPage } from '../pages/question/question';
     MessagePage,
     RewardsPage,
     QuestionPage,
+    HomeMentorPage,
+    ViewJobPage
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,8 @@ import { QuestionPage } from '../pages/question/question';
     MessagePage,
     RewardsPage,
     QuestionPage,
+    HomeMentorPage,
+    ViewJobPage
   ],
   providers: [
     LoginSignupApi,

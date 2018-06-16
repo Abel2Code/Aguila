@@ -2,24 +2,17 @@
 
 </ion-header>
 
-<ion-content padding>
-  <h1>Aguila</h1>
-  Join study groups, recieve help from mentors and many more
+<ion-content id="content" padding>
+  <img src="../../assets/imgs/aguilaSilhouette.png" style="height: 40%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 20%;">
   <form [formGroup]="loginForm">
-    
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
+
+      <ion-input type="text" formControlName="email" value="a@a.b" style="margin-bottom: 5%;"></ion-input>
+      <ion-input type="password" formControlName="password" value="12345" style="margin-bottom: 13%;"></ion-input>
   </form>
-  <button ion-button (click)="loginButton()">Login</button>
-  <button ion-button (click)="dev()">Dev Button</button>
-  
+  <button (click)="loginButton()">Log In</button>
+  <!-- <button ion-button (click)="dev()">Dev Button</button> -->
+
   <p (click)=signUpButton()>Sign Up</p>
   <p (click)=forgotPasswordButton()>Forgot Password?</p>
 

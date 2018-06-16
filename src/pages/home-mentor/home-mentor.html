@@ -10,7 +10,7 @@
   <div id="student-info-box"></div>
 
   <img src="../../assets/imgs/defaultProfile.png" style="width: 22%; margin-left: auto; margin-right: auto; display: block;"/>
-  <p id="student-name" style="text-align: center; color: black;">Student Name</p>
+  <p id="student-name" style="text-align: center; color: black;">Mentor Name</p>
   <p id="student-univ" style="text-align: center; color: black;">University of Southern California</p>
 
   <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1em;">
@@ -20,19 +20,17 @@
   </div>
 
   <div id="ask_question" *ngIf="layout === 'question'">
-    <table>
-      <tr style="height: 2em;">
-        <td>Title:</td>
-        <td><input style="border-radius: 5px" type="text" [(ngModel)]="this.title"/></td>
-      </tr>
-      <tr >
-        <td>Description:</td>
-        <td><textarea style="border-radius: 5px;" [(ngModel)]="this.description" rows="5"></textarea></td>
-      </tr>
-      <tr style="height: 2em;">
-        <td colspan="2"><button id="send_question" (click)="submitToJobBoard()">Send</button></td>
-      </tr>
-    </table>
+    <div *ngIf="jobs.length === 0">
+      <h3>No available jobs! Great job! :D</h3>
+    </div>
+    <div *ngIf="jobs.length != 0">
+      <div *ngFor="let job of jobs" style="border-color: black;" (click)="print('hello'); openJob(job)">
+        <ion-card id="card" style="border-radius: 5px; padding: 0.5em;">
+          <p class="conversation-title" style="font-weight: bold; font-size: 18px;"> {{job.title}} </p>
+          <p class="conversation-description" style="font-size: 12px;"> &nbsp; &nbsp; {{job.description}} </p>
+        </ion-card>
+      </div>
+    </div>
   </div>
 
   <div id="points" *ngIf="layout === 'points'">
@@ -67,7 +65,27 @@
         </ion-card>
       </div>
     </div>
+  </div>
 
+  <div id="ask_question" *ngIf="layout === 'view_job'">
+    <table>
+      <tr style="height: 2em;">
+        <td>Title:</td>
+        <td>{{viewJobTitle}}</td>
+      </tr>
+      <tr style="height: 2em;">
+        <td>Description:</td>
+        <td>{{viewJobDescription}}</td>
+      </tr>
+      <tr>
+        <td>Response:</td>
+        <td><textarea style="border-radius: 5px;" [(ngModel)]="this.response" rows="5"></textarea></td>
+      </tr>
+      <tr style="height: 2em;">
+        <td><button id="send_question" (click)="changeLayout(0)">Cancel</button></td>
+        <td><button id="send_question" (click)="match()">Send</button></td>
+      </tr>
+    </table>
   </div>
 
 
