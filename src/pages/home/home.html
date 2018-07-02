@@ -5,32 +5,40 @@
 <ion-content style="background-color: #e7f0f4">
   <img id="background-USC" src="http://viterbivoices.usc.edu/wp-content/uploads/2017/08/USC.jpg">
   <div id="color-over-image"></div>
-    <p id="header" style="text-align: center">&nbsp;&nbsp;&nbsp;&nbsp; Home     <ion-icon name="log-out" style="color: white; float: right;"></ion-icon></p>
+  <p id="header"> Home
+    <ion-icon id="logout" name="log-out"></ion-icon>
+  </p>
 
   <div id="student-info-box"></div>
 
-  <img src="../../assets/imgs/defaultProfile.png" style="width: 22%; margin-left: auto; margin-right: auto; display: block;"/>
-  <p id="student-name" style="text-align: center; color: black;">Student Name</p>
-  <p id="student-univ" style="text-align: center; color: black;">University of Southern California</p>
+  <img class="defaultImage" src="../../assets/imgs/defaultProfile.png" />
+  <p class='student-info' id='student-name'>Student Name</p>
+  <p class='student-info' id='student-univ'>University of Southern California</p>
 
-  <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1em;">
-    <img class="menu-option" src="../../assets/imgs/luggage.png" (click)="changeLayout(0)" style=" height: 2.5em; padding-right: 6%;"/>
-    <img class="menu-option" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" style=" height: 4em; padding-left: 6%; padding-right: 6%; border-right: 2px solid gray; border-left: 2px solid gray;"/>
-    <img class="menu-option" src="../../assets/imgs/envelope.png" (click)="changeLayout(2)" style="height: 2.5em; padding-left: 6%;"/>
+  <div class='options'>
+    <img class="menu-option" src="../../assets/imgs/luggage.png" (click)="changeLayout(0)" />
+    <img class="menu-option2" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" />
+    <img class="menu-option" src="../../assets/imgs/envelope.png" (click)="changeLayout(2)" />
   </div>
 
   <div id="ask_question" *ngIf="layout === 'question'">
     <table>
-      <tr style="height: 2em;">
+      <tr id="form-title">
         <td>Title:</td>
-        <td><input style="border-radius: 5px" type="text" [(ngModel)]="this.title"/></td>
+        <td>
+          <input class="input-field" type="text" [(ngModel)]="this.title" />
+        </td>
       </tr>
-      <tr >
+      <tr>
         <td>Description:</td>
-        <td><textarea style="border-radius: 5px;" [(ngModel)]="this.description" rows="5"></textarea></td>
+        <td>
+          <textarea class="input-field" [(ngModel)]="this.description" rows="5"></textarea>
+        </td>
       </tr>
-      <tr style="height: 2em;">
-        <td colspan="2"><button id="send_question" (click)="submitToJobBoard()">Send</button></td>
+      <tr id="jobLine">
+        <td colspan="2">
+          <button id="send_question" (click)="submitToJobBoard()">Send</button>
+        </td>
       </tr>
     </table>
   </div>
@@ -38,19 +46,31 @@
   <div id="points" *ngIf="layout === 'points'">
     <table id="shop">
       <tr class="flex-container">
-        <td style="padding-right: 20px; padding-bottom: 5px;"><img class="menu-option" src="../../assets/imgs/comboMeal.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
-        <td style="width: 2px; background-color: #BBB"></td>
-        <td style="padding-left: 20px"><img class="menu-option" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
+        <td class="spacing">
+          <img class="menu-option-prize" src="../../assets/imgs/comboMeal.png" (click)="changeLayout(1)" />
+        </td>
+        <td class="lineSplittingPointPrize"></td>
+        <td class="spacing2">
+          <img class="menu-option-prize" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" />
+        </td>
       </tr>
       <tr class="flex-container">
-        <td style="padding-right: 20px; padding-bottom: 5px;"><img class="menu-option" src="../../assets/imgs/comboMeal.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
-        <td style="width: 2px; background-color: #BBB"></td>
-        <td style="padding-left: 20px"><img class="menu-option" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
+        <td class="spacing">
+          <img class="menu-option-prize" src="../../assets/imgs/comboMeal.png" (click)="changeLayout(1)" />
+        </td>
+        <td class="lineSplittingPointPrize"></td>
+        <td class="spacing2">
+          <img class="menu-option-prize" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" />
+        </td>
       </tr>
       <tr class="flex-container">
-        <td style="padding-right: 20px;  padding-bottom: 5px;"><img class="menu-option" src="../../assets/imgs/comboMeal.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
-        <td style="width: 2px; background-color: #BBB"></td>
-        <td style="padding-left: 20px"><img class="menu-option" src="../../assets/imgs/collectButton.png" (click)="changeLayout(1)" style=" height: 4em; "/></td>
+        <td class="spacing">
+          <img class="menu-option-prize" src="../../assets/imgs/comboMeal.png" (click)="changeLayout(1)" />
+        </td>
+        <td class="lineSplittingPointPrize"></td>
+        <td class="spacing2">
+          <img class="menu-option-prize" src="../../assets/imgs/collectButton.png" (click)="changeLayout(1)" />
+        </td>
       </tr>
     </table>
   </div>
@@ -60,10 +80,10 @@
       <h3>No Replies Yet :|</h3>
     </div>
     <div *ngIf="conversations.length != 0">
-      <div *ngFor="let conversation of conversations" style="border-color: black;" (click)="openMessage(conversation)">
-        <ion-card id="card" style="border-radius: 5px; padding: 0.5em;">
-          <p class="conversation-title" style="font-weight: bold; font-size: 18px;"> {{conversation.title}} </p>
-          <p class="conversation-description" style="font-size: 12px;"> &nbsp; &nbsp; {{conversation.description}} </p>
+      <div id="convoBox" *ngFor="let conversation of conversations" (click)="openMessage(conversation)">
+        <ion-card id="card">
+          <p class="conversation-title"> {{conversation.title}} </p>
+          <p class="conversation-description"> {{conversation.description}} </p>
         </ion-card>
       </div>
     </div>

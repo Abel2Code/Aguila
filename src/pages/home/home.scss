@@ -21,8 +21,14 @@ page-home {
     #header {
       color: #d7dee4;
       font-size: 1.1em;
-      margin-right: 10px;
-      margin-left: 10px;
+      margin-right: 100%;
+      margin-left: 100%;
+      text-align: center;
+      padding-left: 2%;
+    }
+
+    #form-title {
+      height: 2em;
     }
 
     p {
@@ -85,9 +91,78 @@ page-home {
       width: 90%;
     }
 
+    #logout {
+      color: white; float: right;
+    }
+
     #shop {
       margin-left: auto;
       margin-right:auto;
+    }
+
+    #convoBox {
+      border-color: black;
+    }
+
+    #jobLine {
+      height: 2%
+    }
+
+    #card {
+      border-radius: 5px; 
+      padding: 0.5em;
+    }
+
+    .conversation-title {
+      font-weight: bold; 
+      font-size: 18px;
+    }
+
+    .conversation-description {
+      font-size: 4%;
+      margin-left: 4%;
+    }
+
+    .student-info {
+      text-align: center;
+      color: black;
+    }
+
+    .menu-option {
+      height: 2.5em;
+      padding-right: 6%;
+    }
+
+    .menu-option2 {
+      height: 4em; padding-left: 6%; padding-right: 6%; border-right: 2px solid gray; border-left: 2px solid gray;
+    }
+
+    .defaultImage {
+      width: 22%; margin-left: auto; margin-right: auto; display: block;
+    }
+
+    .options {
+      display: flex; justify-content: center; align-items: center; margin-bottom: 1em;
+    }
+
+    .input-field {
+      border-radius: 10px;
+    }
+    .menu-option-prize {
+      height: 4em; 
+    }
+    
+    .spacing {
+      padding-right: 20px; 
+      padding-bottom: 5px;
+    }
+
+    .lineSplittingPointPrize {
+      width: 2px; 
+      background-color: #BBB
+    }
+    .spacing2{
+      padding-left: 20px
     }
 
 }
