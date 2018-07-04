@@ -113,4 +113,19 @@ export class LoginSignupApi {
     });
   }
 
+  sendMessage(jobId, userId, message){
+    return new Promise(resolve => {
+      let body = {
+        job: jobId,
+        author: userId,
+        message: message
+      }
+      this.http.put(this.domain + 'sendMessage', body)
+      .map(res => res.json())
+      .subscribe(data => {
+          resolve(data);
+      });
+    })
+  }
+
 }

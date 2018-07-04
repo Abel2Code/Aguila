@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginSignupApi } from '../../providers/login-signup-api';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the MessagePage page.
@@ -16,10 +18,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class MessagePage {
   messages: any;
   messageData: String;
+  userId;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loginProvider : LoginSignupApi, private storage: Storage) {
     this.messages = this.navParams.data.messages;
     console.log(this.messages);
+    this.storage.get('id').then((data : any) =>{
+      this.userId = data;
+    })
   }
 
   ionViewDidLoad() {
@@ -31,11 +37,8 @@ export class MessagePage {
       isMentor: false,
       message: this.messageData
     });
+    this.loginProvider.sendMessage(this.navParams.get('_id'), this.userId, this.messageData)
     this.messageData = "";
-
-    setTimeout(()=>this.pushCustomReply(),1500)
-
-
   }
 
   pushCustomReply(){
@@ -47,7 +50,7 @@ export class MessagePage {
   }
 
   scrollToBottom(){
-    
+
   }
 
   goBack(){
