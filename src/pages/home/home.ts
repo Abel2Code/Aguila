@@ -94,4 +94,9 @@ export class HomePage {
     this.navCtrl.push(MessagePage, conversation);
   }
 
+  logOut(){
+    this.storage.clear();
+    this.navCtrl.popToRoot();
+  }
+
 }

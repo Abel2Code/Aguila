@@ -19,12 +19,18 @@ export class MessagePage {
   messages: any;
   messageData: String;
   userId;
+  isMentor = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loginProvider : LoginSignupApi, private storage: Storage) {
     this.messages = this.navParams.data.messages;
     console.log(this.messages);
     this.storage.get('id').then((data : any) =>{
       this.userId = data;
+      if(this.navParams.get('mentor') == this.userId){
+        console.log("is a mentor")
+        this.isMentor = true;
+      }
+
     })
   }
 
@@ -34,7 +40,7 @@ export class MessagePage {
 
   addMessage(){
     this.messages.push({
-      isMentor: false,
+      isMentor: this.isMentor,
       message: this.messageData
     });
     this.loginProvider.sendMessage(this.navParams.get('_id'), this.userId, this.messageData)

@@ -15,7 +15,7 @@
 <ion-content padding>
     <div style="overflow: scroll; height: 100%; margin: 0px;">
       <div *ngFor="let data of messages">
-           <ion-item *ngIf="data.isMentor" no-lines>
+           <ion-item *ngIf="data.isMentor && !isMentor" no-lines>
             <div class="chat-text" item-left>
               <div style="margin-left: 15%;"><p>James</p> </div>
               <div style="display: flex">
@@ -24,11 +24,25 @@
               </div>
             </div>
           </ion-item>
-          <ion-item *ngIf="!data.isMentor" no-lines>
+          <ion-item *ngIf="!data.isMentor && !isMentor" no-lines>
             <div class="chat-text-user">
               <p class="user-sent message">{{data.message}}</p>
             </div>
           </ion-item>
+          <ion-item *ngIf="!data.isMentor && isMentor" no-lines>
+           <div class="chat-text" item-left>
+             <div style="margin-left: 15%;"><p>James</p> </div>
+             <div style="display: flex">
+               <img src="../../assets/imgs/defaultProfile.png" style="height:1.5em; margin-right: 5px;"/>
+               <p class="other-sent message">{{data.message}}</p>
+             </div>
+           </div>
+         </ion-item>
+         <ion-item *ngIf="data.isMentor && isMentor" no-lines>
+           <div class="chat-text-user">
+             <p class="user-sent message">{{data.message}}</p>
+           </div>
+         </ion-item>
          </div>
       </div>
 
