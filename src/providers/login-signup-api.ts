@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { Storage } from '@ionic/storage';
+
+
 @Injectable()
 export class LoginSignupApi {
   domain : String = " http://localhost:3000/api/";
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private storage: Storage) {
 
   }
 
@@ -51,53 +54,62 @@ export class LoginSignupApi {
     });
   }
 
-  postQuestion(data, token){
-    console.log(token);
+  postQuestion(data){
     return new Promise(resolve => {
-      this.http.post(this.domain + 'postQuestion', data)
-      .map(res => res.json())
-      .subscribe(data => {
-        resolve(data);
+      this.storage.get('token').then((val) => {
+        this.http.post(this.domain + 'postQuestion/' + val, data)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        });
       });
     });
   }
 
   getAskerConversations(author){
     return new Promise(resolve => {
-      this.http.get(this.domain + 'conversations_a/' + author)
-      .map(res => res.json())
-      .subscribe(data => {
-        resolve(data);
+      this.storage.get('token').then((val) => {
+        this.http.get(this.domain + 'conversations_a/' + val)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        });
       });
     });
   }
 
   getMentorConversations(author){
     return new Promise(resolve => {
-      this.http.get(this.domain + 'conversations_m/' + author)
-      .map(res => res.json())
-      .subscribe(data => {
-        resolve(data);
+      this.storage.get('token').then((val) => {
+        this.http.get(this.domain + 'conversations_m/' + val)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        });
       });
     });
   }
 
   getUnansweredJobs(){
     return new Promise(resolve => {
-      this.http.get(this.domain + '/unansweredJobs')  .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        });;
+      this.storage.get('token').then((val) => {
+        this.http.get(this.domain + 'unansweredJobs/' + val)  .map(res => res.json())
+          .subscribe(data => {
+            resolve(data);
+          });
+        });
     });
   }
 
   jobMatch(job_id, mentor_id){
     return new Promise(resolve => {
-      let toSend = {id: job_id, mentorId: mentor_id};
-      this.http.put(this.domain + 'jobMatch', toSend)
-        .map(res => res.json())
-        .subscribe(data => {
-            resolve(data);
+      let toSend = {id: job_id};
+      this.storage.get('token').then((val) => {
+        this.http.put(this.domain + 'jobMatch/' + val, toSend)
+          .map(res => res.json())
+          .subscribe(data => {
+              resolve(data);
+          });
         });
     });
   }
@@ -105,11 +117,13 @@ export class LoginSignupApi {
   startConversation(job_id, m_description, m_response){
     return new Promise(resolve => {
       let toSend = {id: job_id, description: m_description, response: m_response};
-      this.http.put(this.domain + 'startConversation', toSend)
-        .map(res => res.json())
-        .subscribe(data => {
-            resolve(data);
-        });
+      this.storage.get('token').then((val) => {
+        this.http.put(this.domain + 'startConversation/' + val, toSend)
+          .map(res => res.json())
+          .subscribe(data => {
+              resolve(data);
+          });
+      });
     });
   }
 
@@ -117,13 +131,14 @@ export class LoginSignupApi {
     return new Promise(resolve => {
       let body = {
         job: jobId,
-        author: userId,
         message: message
       }
-      this.http.put(this.domain + 'sendMessage', body)
-      .map(res => res.json())
-      .subscribe(data => {
-          resolve(data);
+      this.storage.get('token').then((val) => {
+        this.http.put(this.domain + 'sendMessage/' + val, body)
+        .map(res => res.json())
+        .subscribe(data => {
+            resolve(data);
+        });
       });
     })
   }

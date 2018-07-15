@@ -27,7 +27,6 @@ export class HomePage {
     this.changeLayout(0);
     this.storage.get('id').then((data : any) =>{
       this.id = data;
-      console.log(this.id);
     }).then(()=>this.getConversations());
 
 
@@ -65,7 +64,7 @@ export class HomePage {
         author: this.id,
         description: this.description};
 
-      this.loginProvider.postQuestion(data, this.token).then((data : any) =>{
+      this.loginProvider.postQuestion(data).then((data : any) =>{
         if(data.message == "Question Posted"){
           let alert = this.alertCtrl.create({
             title: 'Question Posted',
@@ -85,7 +84,6 @@ export class HomePage {
 
   getConversations(){
     this.loginProvider.getAskerConversations(this.id).then((data: any)=>{
-      console.log(data);
       this.conversations = data.reverse();
     });
   }

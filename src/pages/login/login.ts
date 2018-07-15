@@ -60,14 +60,12 @@ export class LoginPage {
           this.storage.set('id', data.id).then((b: any) => {
             this.navCtrl.push(HomePage);
           });
-          console.log("NonMentorId : " + data.id);
         });
       }else if (data.valid == 2){
         this.storage.set('token', data.token).then((a:any)=> {
           this.storage.set('id', data.id).then((b: any) => {
             this.navCtrl.push(HomeMentorPage);
           });
-          console.log("MentorId : " + data.id);
         });
       } else {
         console.log(data)

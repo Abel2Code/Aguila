@@ -77,7 +77,7 @@ export class HomeMentorPage {
         author: this.id,
         description: this.description};
 
-      this.loginProvider.postQuestion(data, this.token).then((data : any) =>{
+      this.loginProvider.postQuestion(data).then((data : any) =>{
         if(data.message == "Question Posted"){
           let alert = this.alertCtrl.create({
             title: 'Question Posted',
@@ -141,6 +141,11 @@ export class HomeMentorPage {
         });
       });
     });
+  }
+
+  logOut(){
+    this.storage.clear();
+    this.navCtrl.popToRoot();
   }
 
 }
