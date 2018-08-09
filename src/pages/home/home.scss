@@ -35,15 +35,15 @@ page-home {
       color: black;
     }
 
-    #student-info-box {
-      position: absolute;
+    .student-info-box {
+      position: relative;
       z-index: -2;
       background-color: white;
-      height: 170px;
+      height: 28%;
       width: 90%;
-      margin-left: 1.2em;
-      margin-top: 1.7em;
       border-radius: 10px;
+      left: 16px;
+      top: 16px;
     }
 
     #student-name {
@@ -60,12 +60,10 @@ page-home {
     }
 
     #ask_question {
+      position: relative;
+      bottom: 58px;
       background-color: white;
       border-radius: 10px;
-      margin-left: 1.2em;
-      margin-top: 2em;
-      padding: 1em;
-      width: 90%;
     }
 
     #send_question {
@@ -125,28 +123,48 @@ page-home {
 
     .student-info {
       text-align: center;
-      color: black;
+    position: relative;
+    bottom: 26px;
+    color: black;
     }
 
     .menu-option {
-      height: 2.5em;
-      padding-right: 6%;
+      height: 2.7em;
+      position: relative;
+      top: 10px;
+      right: 32px;
     }
 
     .menu-option2 {
       height: 4em; padding-left: 6%; padding-right: 6%; border-right: 2px solid gray; border-left: 2px solid gray;
     }
 
+    .menu-option3 {
+      height: 2.5em;
+    position: relative;
+    left: 24px;
+    top: 7px;
+    }
+
     .defaultImage {
-      width: 22%; margin-left: auto; margin-right: auto; display: block;
+      position: relative;
+    width: 20%;
+    left: 40%;
+    bottom: 20px;
     }
 
     .options {
-      display: flex; justify-content: center; align-items: center; margin-bottom: 1em;
+      position: relative;
+    bottom: 47px;
+    display: flex;
+    justify-content: center
     }
 
     .input-field {
-      border-radius: 10px;
+      width: 100%;
+      height: 12%;
+      border-width: 2px;
+      border-radius: 5px;
     }
     .menu-option-prize {
       height: 4em; 
