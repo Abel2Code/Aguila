@@ -1,5 +1,37 @@
 page-home {
 
+  @media (min-width: 768px) {
+    .student-info {
+      font-size: 27px !important;
+    }
+
+    .options {
+      height: 109px !important;
+    }
+
+    .menu-option {
+      height: 6.7em !important;
+      width: 18% !important;
+      top: 6px !important;
+      right: 59px !important;
+    }
+    .menu-option2 {
+      height: 8em !important;
+
+    }
+    .menu-option3 {
+      height: 5.5em !important;
+      left: 56px !important;
+      top: 16px !important;
+    }
+
+    #ask_question {
+      margin-left: 2.2em !important;
+      height: 50% !important;
+    }
+
+  }
+
  
   .scroll-content {
       overflow: hidden;
