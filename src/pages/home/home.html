@@ -23,7 +23,8 @@
     </div>
   </div>
   <div id="ask_question" *ngIf="layout === 'question'">
-    <table>
+
+    <!-- <table>
       <tr id="form-title">
         <td>Title:</td>
         <td>
@@ -32,7 +33,6 @@
       </tr>
       <tr>
         <td id="form-title">Description:</td>
-        <br/>
         <td>
           <textarea class="input-field" [(ngModel)]="this.description" rows="5"></textarea>
         </td>
@@ -42,7 +42,19 @@
           <button id="send_question" (click)="submitToJobBoard()">Send</button>
         </td>
       </tr>
-    </table>
+    </table> -->
+    <div>
+      <div class="title-box">
+        <p class="title-box-title">Title:</p>
+        <input class="input-field title-input" type="text" [(ngModel)]="this.title" />
+      </div>
+
+      <p class="title-box-question">New Question:</p>
+      <textarea class="input-field" [(ngModel)]="this.description" rows="5"></textarea>
+      <button id="send_question" (click)="submitToJobBoard()">Send</button>
+
+    </div>
+
   </div>
 
   <div id="points" *ngIf="layout === 'points'">

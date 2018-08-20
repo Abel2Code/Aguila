@@ -5,6 +5,28 @@ page-home {
       overflow: hidden;
     }
 
+    .title-box-title{
+      margin: 0;
+    margin-top: 3px;
+    padding-right: 8px;
+    font-size: large;
+    }
+
+    .title-input{
+      margin-top: 3px;
+      line-height: normal;
+      height: 24px !important;
+    }
+
+    .title-box-question {
+      font-size: large;
+      margin-bottom: 7px;
+    }
+
+    .title-box {
+      display: flex;
+    }
+
     .main-container {
       background-color: white;
       border-radius: 4%;
@@ -172,8 +194,8 @@ page-home {
     .input-field {
       width: 100%;
       height: 12%;
-      border-width: 2px;
-      border-radius: 5px;
+      border: 1.1px solid rgba(117, 117, 117, 0.4);
+      border-radius: 6px;
     }
     .menu-option-prize {
       height: 4em; 
