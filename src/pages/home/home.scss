@@ -1,6 +1,19 @@
 page-home {
+
+ 
   .scroll-content {
       overflow: hidden;
+    }
+
+    .main-container {
+      background-color: white;
+      border-radius: 4%;
+      position: relative;
+      width: 91%;
+      align-content: center;
+      left: 4%;
+      top: 2%;
+      padding-bottom: 14px;
     }
 
     #background-USC {
@@ -36,14 +49,10 @@ page-home {
     }
 
     .student-info-box {
+      display: flex;
       position: relative;
-      z-index: -2;
-      background-color: white;
-      height: 28%;
-      width: 90%;
-      border-radius: 10px;
-      left: 16px;
-      top: 16px;
+      right: 2%;
+      flex-direction: column;
     }
 
     #student-name {
@@ -64,6 +73,7 @@ page-home {
       bottom: 58px;
       background-color: white;
       border-radius: 10px;
+      top: 3%;
     }
 
     #send_question {
@@ -154,10 +164,9 @@ page-home {
     }
 
     .options {
-      position: relative;
-    bottom: 47px;
-    display: flex;
-    justify-content: center
+      display: flex;
+      justify-content: center;
+      height: 57px;
     }
 
     .input-field {
