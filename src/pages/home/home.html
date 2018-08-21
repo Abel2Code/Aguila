@@ -50,7 +50,8 @@
       </div>
 
       <p class="title-box-question">New Question:</p>
-      <textarea class="input-field" [(ngModel)]="this.description" rows="5"></textarea>
+      <textarea type="text" class="input-field" [(ngModel)]="this.description" rows="5"></textarea>
+      <!-- <input type="text" class="input-field" [(ngModel)]="this.description" rows="5"> -->
       <button id="send_question" (click)="submitToJobBoard()">Send</button>
 
     </div>

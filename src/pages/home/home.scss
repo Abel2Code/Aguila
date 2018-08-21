@@ -5,6 +5,32 @@ page-home {
       font-size: 27px !important;
     }
 
+    input[type='text'] {
+      font-size: 42px
+    }
+
+
+
+    .title-box-title {
+      font-size: 46px !important;
+    }
+
+    .title-input {
+      width: 74% !important;
+      height: 56px !important;
+    }
+
+    .title-box-question{
+      font-size: 44px !important;
+      margin-top: 11px !important;
+    }
+
+    .input-field {
+      font-size: 31px !important;
+      // width: 36em !important;
+      // height: 26ex !important;
+    }
+
     .options {
       height: 109px !important;
     }
@@ -49,6 +75,19 @@ page-home {
       line-height: normal;
       height: 24px !important;
     }
+
+
+
+    @media (min-width: 768px) {
+      .title-input {
+        height: 56px !important;
+      }
+    }
+
+
+
+
+
 
     .title-box-question {
       font-size: large;
