@@ -72,6 +72,7 @@ export class HomePage {
           });
           alert.present();
         } else {
+          console.log(data);
           let alert = this.alertCtrl.create({
             title: 'ERROR',
             buttons: ['Dismiss']
