@@ -1,6 +1,112 @@
 page-home {
+
+  @media (min-width: 768px) {
+    .student-info {
+      font-size: 27px !important;
+    }
+
+    input[type='text'] {
+      font-size: 42px
+    }
+
+
+
+    .title-box-title {
+      font-size: 46px !important;
+    }
+
+    .title-input {
+      width: 74% !important;
+      height: 56px !important;
+    }
+
+    .title-box-question{
+      font-size: 44px !important;
+      margin-top: 11px !important;
+    }
+
+    .input-field {
+      font-size: 31px !important;
+      // width: 36em !important;
+      // height: 26ex !important;
+    }
+
+    .options {
+      height: 109px !important;
+    }
+
+    .menu-option {
+      height: 6.7em !important;
+      width: 18% !important;
+      top: 6px !important;
+      right: 59px !important;
+    }
+    .menu-option2 {
+      height: 8em !important;
+
+    }
+    .menu-option3 {
+      height: 5.5em !important;
+      left: 56px !important;
+      top: 16px !important;
+    }
+
+    #ask_question {
+      margin-left: 2.2em !important;
+      height: 50% !important;
+    }
+
+  }
+
+ 
   .scroll-content {
       overflow: hidden;
+    }
+
+    .title-box-title{
+      margin: 0;
+    margin-top: 3px;
+    padding-right: 8px;
+    font-size: large;
+    }
+
+    .title-input{
+      margin-top: 3px;
+      line-height: normal;
+      height: 24px !important;
+    }
+
+
+
+    @media (min-width: 768px) {
+      .title-input {
+        height: 56px !important;
+      }
+    }
+
+
+
+
+
+
+    .title-box-question {
+      font-size: large;
+      margin-bottom: 7px;
+    }
+
+    .title-box {
+      display: flex;
+    }
+
+    .main-container {
+      background-color: white;
+      border-radius: 4%;
+      position: relative;
+      width: 91%;
+      align-content: center;
+      left: 4%;
+      top: 2%;
+      padding-bottom: 14px;
     }
 
     #background-USC {
@@ -21,23 +127,25 @@ page-home {
     #header {
       color: #d7dee4;
       font-size: 1.1em;
-      margin-right: 10px;
-      margin-left: 10px;
+      margin-right: 100%;
+      margin-left: 100%;
+      text-align: center;
+      padding-left: 2%;
+    }
+
+    #form-title {
+      height: 2em;
     }
 
     p {
       color: black;
     }
 
-    #student-info-box {
-      position: absolute;
-      z-index: -2;
-      background-color: white;
-      height: 170px;
-      width: 90%;
-      margin-left: 1.2em;
-      margin-top: 1.7em;
-      border-radius: 10px;
+    .student-info-box {
+      display: flex;
+      position: relative;
+      right: 2%;
+      flex-direction: column;
     }
 
     #student-name {
@@ -54,12 +162,11 @@ page-home {
     }
 
     #ask_question {
+      position: relative;
+      bottom: 58px;
       background-color: white;
       border-radius: 10px;
-      margin-left: 1.2em;
-      margin-top: 2em;
-      padding: 1em;
-      width: 90%;
+      top: 3%;
     }
 
     #send_question {
@@ -85,9 +192,97 @@ page-home {
       width: 90%;
     }
 
+    #logout {
+      color: white; float: right;
+    }
+
     #shop {
       margin-left: auto;
       margin-right:auto;
+    }
+
+    #convoBox {
+      border-color: black;
+    }
+
+    #jobLine {
+      height: 2%
+    }
+
+    #card {
+      border-radius: 5px; 
+      padding: 0.5em;
+    }
+
+    .conversation-title {
+      font-weight: bold; 
+      font-size: 18px;
+    }
+
+    .conversation-description {
+      font-size: 4%;
+      margin-left: 4%;
+    }
+
+    .student-info {
+      text-align: center;
+    position: relative;
+    bottom: 26px;
+    color: black;
+    }
+
+    .menu-option {
+      height: 2.7em;
+      position: relative;
+      top: 10px;
+      right: 32px;
+    }
+
+    .menu-option2 {
+      height: 4em; padding-left: 6%; padding-right: 6%; border-right: 2px solid gray; border-left: 2px solid gray;
+    }
+
+    .menu-option3 {
+      height: 2.5em;
+    position: relative;
+    left: 24px;
+    top: 7px;
+    }
+
+    .defaultImage {
+      position: relative;
+    width: 20%;
+    left: 40%;
+    bottom: 20px;
+    }
+
+    .options {
+      display: flex;
+      justify-content: center;
+      height: 57px;
+    }
+
+    .input-field {
+      width: 100%;
+      height: 12%;
+      border: 1.1px solid rgba(117, 117, 117, 0.4);
+      border-radius: 6px;
+    }
+    .menu-option-prize {
+      height: 4em; 
+    }
+    
+    .spacing {
+      padding-right: 20px; 
+      padding-bottom: 5px;
+    }
+
+    .lineSplittingPointPrize {
+      width: 2px; 
+      background-color: #BBB
+    }
+    .spacing2{
+      padding-left: 20px
     }
 
 }
