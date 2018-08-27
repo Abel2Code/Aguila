@@ -61,7 +61,7 @@ export class MessagePage {
 			  this.messages.push(msg);
 			  this.content.scrollToBottom();
 			})*/
-  });
+  // });
 
 
     })
