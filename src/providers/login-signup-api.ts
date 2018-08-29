@@ -143,4 +143,15 @@ export class LoginSignupApi {
     })
   }
 
+  getMessages(jobId){
+    return new Promise(resolve => {
+      this.storage.get('token').then((val => {
+        this.http.get(this.domain + 'getMessages/' + jobId + '/' + val) .map(res => res.json())
+          .subscribe(data => {
+            resolve(data);
+          });
+      }))
+    })
+  }
+
 }

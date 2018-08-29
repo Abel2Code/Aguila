@@ -36,9 +36,7 @@ export class HomePage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
+  ionViewDidLoad() { }
 
   changeLayout(value){
     switch(value){
@@ -50,7 +48,6 @@ export class HomePage {
         break;
       case 2:
         this.layout = "inbox";
-        console.log(this.conversations);
         break;
       default:
         this.layout = "error";
