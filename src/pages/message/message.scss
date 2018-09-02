@@ -3,6 +3,41 @@ page-message {
     background-color: #1989ac;
   }
 
+  .backArrow {
+    height: 40%; 
+    position: absolute;
+  }
+  .messageContainer {
+    overflow: scroll; 
+    height: 100%; 
+    margin: 0px;
+  }
+  .messageName {
+    margin-left: 15%;
+  }
+  .imgContainer {
+    display: flex;
+  }
+  .profileImage {
+    height:1.5em; 
+    margin-right: 5px;
+  }
+  .inputContainer {
+    display: flex;
+  }
+  .userMessage {
+    font-size:18px;
+    border-radius:15px;
+    height:100%; 
+    width: 80%; 
+    border-style: groove;
+  }
+  .addMessageButton {
+    padding-top: 0.4em;
+    width: 32px; 
+    height: 100%; 
+    margin-left: 13px;
+  }
   ion-header {
     height: 9%;
     width: 100%;
@@ -12,6 +47,7 @@ page-message {
   ion-item{
     padding-left: 0px !important;
   }
+  
 
   #others-name {
     text-align: center;
