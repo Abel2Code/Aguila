@@ -154,4 +154,26 @@ export class LoginSignupApi {
     })
   }
 
+  getUserInfo(){
+    return new Promise(resolve => {
+      this.storage.get('token').then((token) => {
+        this.http.get(this.domain + 'user/' + token)  .map(res => res.json())
+          .subscribe(data => {
+            resolve(data);
+          });
+        });
+    });
+  }
+
+  getMentorInfo(mentorId: string) {
+    return new Promise(resolve => {
+      this.storage.get('token').then((token) => {
+        this.http.get(this.domain + 'user/' + mentorId + '/' + token)  .map(res => res.json())
+          .subscribe(data => {
+            resolve(data);
+          });
+        });
+    });
+  }
+
 }

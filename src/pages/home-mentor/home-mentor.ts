@@ -27,13 +27,14 @@ export class HomeMentorPage {
   response: String;
   currentJob: any;
 
+  userInfo: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl : AlertController, private loginProvider : LoginSignupApi, private storage: Storage) {
     this.jobs = [];
     this.conversations = [];
     this.changeLayout(0);
     this.storage.get('id').then((data : any) =>{
       this.id = data;
-      console.log(this.id);
     }).then(()=>this.getJobs());
 
 
@@ -45,11 +46,14 @@ export class HomeMentorPage {
       this.token = data;
     });
 
+    this.loginProvider.getUserInfo().then((userInfo: any) => {
+      this.userInfo = userInfo;
+      this.storage.set('userInfo', userInfo);
+    });
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Mentor Home');
-  }
+  ionViewDidLoad() { }
 
   changeLayout(value){
     switch(value){
@@ -97,7 +101,6 @@ export class HomeMentorPage {
 
   getJobs(){
     this.loginProvider.getUnansweredJobs().then((data: any)=>{
-      console.log(data);
       this.jobs = data.reverse();
     });
   }
@@ -106,22 +109,15 @@ export class HomeMentorPage {
     this.navCtrl.push(MessagePage, conversation);
   }
 
-  print(message){
-    console.log(message);
-  }
+  print(message){}
 
   getConversations(){
     this.loginProvider.getMentorConversations(this.id).then((data: any)=>{
-      console.log(data);
       this.conversations = data.reverse();
-      console.log("conversations:")
-      console.log(this.conversations);
     });
   }
 
   openJob(job){
-    // this.navCtrl.push(ViewJobPage, job);
-    console.log("Opening Job");
     this.changeLayout(3);
     this.viewJobTitle = job.title;
     this.viewJobDescription = job.description;
@@ -135,9 +131,6 @@ export class HomeMentorPage {
         this.loginProvider.getMentorConversations(this.id).then((data: any)=>{
           this.conversations = data.reverse();
           this.changeLayout(2);
-          for(let convo of this.conversations){
-            console.log(convo);
-          }
         });
       });
     });

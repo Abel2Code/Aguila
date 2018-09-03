@@ -10,8 +10,17 @@
   <div id="student-info-box"></div>
 
   <img src="../../assets/imgs/defaultProfile.png" style="width: 22%; margin-left: auto; margin-right: auto; display: block;"/>
-  <p id="student-name" style="text-align: center; color: black;">Mentor Name</p>
-  <p id="student-univ" style="text-align: center; color: black;">University of Southern California</p>
+  
+  
+  <div *ngIf="userInfo">
+      <p class='student-info' id='student-name'>{{userInfo['firstName'] + ' ' + userInfo['lastName']}}</p>
+      <p class='student-info' id='student-univ'>{{userInfo['school']}}</p>
+  </div>
+
+  <div *ngIf="!userInfo">
+      <p class='student-info' id='student-name'>You</p>
+      <p class='student-info' id='student-univ'>Your School</p>
+  </div>
 
   <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1em;">
     <img class="menu-option" src="../../assets/imgs/luggage.png" (click)="changeLayout(0)" style=" height: 2.5em; padding-right: 6%;"/>
