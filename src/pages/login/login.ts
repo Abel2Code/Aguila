@@ -58,12 +58,14 @@ export class LoginPage {
       if (data.valid == 1){
         this.storage.set('token', data.token).then((a: any) => {
           this.storage.set('id', data.id).then((b: any) => {
+            console.log(data.id);
             this.navCtrl.push(HomePage);
           });
         });
       }else if (data.valid == 2){
         this.storage.set('token', data.token).then((a:any)=> {
           this.storage.set('id', data.id).then((b: any) => {
+            console.log(data.id);
             this.navCtrl.push(HomeMentorPage);
           });
         });

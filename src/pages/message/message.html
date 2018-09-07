@@ -6,51 +6,67 @@
 -->
 <ion-header>
   <div>
+<<<<<<< HEAD
     <img src="../../assets/imgs/backArrow.png" class="backArrow" (click)="goBack()"/>
+=======
+    <img src="../../assets/imgs/backArrow.png" class="backArrow" (click)="goBack();" />
+>>>>>>> 8ed40676bac2f2c8fa6deab9e5d53693171d5722
     <p id="others-name">James</p>
   </div>
 </ion-header>
 
 
 <ion-content padding>
-    <div class="messageContainer">
-      <div *ngFor="let data of messages">
-           <ion-item *ngIf="data.isMentor && !isMentor" no-lines>
-            <div class="chat-text" item-left>
-              <div class="messageName"><p>James</p> </div>
-              <div class="imgContainer">
-                <img class="profileImage" src="../../assets/imgs/defaultProfile.png"/>
-                <p class="other-sent message">{{data.message}}</p>
-              </div>
-            </div>
-          </ion-item>
-          <ion-item *ngIf="!data.isMentor && !isMentor" no-lines>
-            <div class="chat-text-user">
-              <p class="user-sent message">{{data.message}}</p>
-            </div>
-          </ion-item>
-          <ion-item *ngIf="!data.isMentor && isMentor" no-lines>
-           <div class="chat-text" item-left>
-             <div class="messageName"><p>James</p> </div>
-             <div class="imgContainer">
-               <img class="profileImage" src="../../assets/imgs/defaultProfile.png"/>
-               <p class="other-sent message">{{data.message}}</p>
-             </div>
-           </div>
-         </ion-item>
-         <ion-item *ngIf="data.isMentor && isMentor" no-lines>
-           <div class="chat-text-user">
-             <p class="user-sent message">{{data.message}}</p>
-           </div>
-         </ion-item>
-         </div>
-      </div>
-
-       <div id="input">
-        <div class="inputContainer">
-            <input class="userMessage" type="text" [(ngModel)]="messageData">
-            <ion-icon class="addMessageButton" item-right name="arrow-round-up" (click)="addMessage()">
-            </ion-icon>
+  <div class="messageContainer">
+    <div *ngFor="let data of messages">
+      <ion-item *ngIf="data.isMentor && !isMentor" no-lines>
+        <div class="chat-text" item-left>
+          <div class="messageName">
+            <p>James</p>
+          </div>
+          <div class="imgContainer">
+            <img class="profileImage" src="../../assets/imgs/defaultProfile.png" />
+            <p class="other-sent message">{{data.message}}</p>
+          </div>
         </div>
+      </ion-item>
+      <ion-item *ngIf="!data.isMentor && !isMentor" no-lines>
+        <div class="chat-text-user">
+          <p class="user-sent message">{{data.message}}</p>
+        </div>
+      </ion-item>
+      <ion-item *ngIf="!data.isMentor && isMentor" no-lines>
+        <div class="chat-text" item-left>
+          <div class="messageName">
+            <p>James</p>
+          </div>
+          <div class="imgContainer">
+            <img class="profileImage" src="../../assets/imgs/defaultProfile.png" />
+            <p class="other-sent message">{{data.message}}</p>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item *ngIf="data.isMentor && isMentor" no-lines>
+        <div class="chat-text-user">
+          <p class="user-sent message">{{data.message}}</p>
+        </div>
+      </ion-item>
     </div>
+  </div>
+
+  <div id="input">
+    <div class="inputContainer">
+      <input class="userMessage" type="text" [(ngModel)]="messageData">
+      <ion-icon class="addMessageButton" item-right name="arrow-round-up" (click)="addMessage()">
+      </ion-icon>
+    </div>
+  </div>
+
+  <div id="input">
+    <div style="display: flex">
+      <input style="font-size:18px;border-radius:15px;height:100%; width: 80%; border-style: groove;" type="text" [(ngModel)]="messageData">
+      <ion-icon style="padding-top: 0.4em; width: 32px; height: 100%; margin-left: 13px;" item-right name="arrow-round-up" (click)="addMessage()">
+      </ion-icon>
+    </div>
+  </div>
 </ion-content>
