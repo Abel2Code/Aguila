@@ -4,8 +4,9 @@ page-message {
   }
 
   .backArrow {
-    height: 40%; 
+    height: 33%;
     position: absolute;
+    left: 15px;
   }
   .messageContainer {
     overflow: scroll; 
@@ -39,7 +40,7 @@ page-message {
     margin-left: 13px;
   }
   ion-header {
-    height: 9%;
+    height: 8%;
     width: 100%;
     background-color: #1989ac;
   }
@@ -52,6 +53,7 @@ page-message {
   #others-name {
     text-align: center;
     font-size: 1.2em;
+    bottom: 2px;
   }
 
   .vertical-flex {

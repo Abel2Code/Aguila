@@ -1,12 +1,116 @@
 page-home {
+  @media (min-width: 768px) {
+    .student-info {
+      font-size: 27px !important;
+    }
+
+    input[type='text'] {
+      font-size: 42px
+    }
+
+
+
+    .title-box-title {
+      font-size: 46px !important;
+    }
+
+    .title-input {
+      width: 74% !important;
+      height: 56px !important;
+    }
+
+    .title-box-question{
+      font-size: 44px !important;
+      margin-top: 11px !important;
+    }
+
+    .input-field {
+      font-size: 31px !important;
+      // width: 36em !important;
+      // height: 26ex !important;
+    }
+
+    .options {
+      height: 109px !important;
+    }
+
+    .menu-option {
+      height: 6.7em !important;
+      width: 18% !important;
+      top: 6px !important;
+      right: 59px !important;
+    }
+    .menu-option2 {
+      height: 8em !important;
+
+    }
+    .menu-option3 {
+      height: 5.5em !important;
+      left: 56px !important;
+      top: 16px !important;
+    }
+
+    #ask_question {
+      margin-left: 2.2em !important;
+      height: 50% !important;
+    }
+
+  }
   .scroll-content {
       overflow: hidden;
+    }
+    .main-container {
+      background-color: white;
+      border-radius: 4%;
+      position: relative;
+      width: 91%;
+      align-content: center;
+      left: 4%;
+      top: 2%;
+      padding-bottom: 14px;
+    }
+
+    .menu-option {
+      height: 2.7em;
+      position: relative;
+      top: 10px;
+      right: 32px;
+    }
+
+    .menu-option2 {
+      height: 4em;
+      padding-left: 6%;
+      padding-right: 6%;
+      border-right: 2px solid gray; 
+      border-left: 2px solid gray;
+  
+    }
+
+    .menu-option3 {
+      height: 2.5em;
+      position: relative;
+      left: 24px;
+      top: 7px;
+    }
+
+    .defualtImage {
+      position: relative;
+      width: 20%;
+      left: 40%;
+      bottom: 20px;
     }
     
     #background-USC {
       position:absolute;
       z-index:-3;
       width: 100%;
+    }
+
+    #logout {
+      color: white;
+      float: right;
+      position: relative;
+      left: 7em;
     }
 
     #color-over-image {
@@ -20,9 +124,14 @@ page-home {
 
     #header {
       color: #d7dee4;
-      font-size: 1.1em;
-      margin-right: 10px;
+      font-size: 16.1px;
+      margin-right: 100%;
       margin-left: 10px;
+      text-align: center;
+      padding-left: 2%;
+      display: flex;
+      position: relative;
+    left: 9em;
     }
 
     p {
@@ -30,14 +139,17 @@ page-home {
     }
 
     #student-info-box {
-      position: absolute;
-      z-index: -2;
-      background-color: white;
-      height: 170px;
-      width: 90%;
-      margin-left: 1.2em;
-      margin-top: 1.7em;
-      border-radius: 10px;
+      display: flex;
+      position: relative;
+      right: 2%;
+      flex-direction: column;
+    }
+    
+    .student-info {
+      text-align: center;
+    position: relative;
+    bottom: 26px;
+    color: black;
     }
 
     #student-name {
@@ -51,6 +163,12 @@ page-home {
       font-weight: 500;
       padding: 0px;
       margin-top: 0px;
+    }
+
+    .options {
+      display: flex;
+      justify-content: center;
+      height: 57px;
     }
 
     #ask_question {
@@ -85,9 +203,36 @@ page-home {
       width: 90%;
     }
 
+    .menu-option-prize {
+      height: 4em;
+      position: relative;
+      right: 30px;
+    }
+
+    .spacing {
+      padding-right: 20px;
+      padding-bottom: 5px;
+    }
+    .spacing2 {
+      padding-left: 20px;
+    }
+
+    .lineSplittingPointPrize {
+      width: 2px;
+      background-color: #BBB;
+    }
+
+    .circle-point {
+      left: 20px;
+    }
+
     #shop {
       margin-left: auto;
       margin-right:auto;
+    }
+
+    #cancelButton{
+      width: 100%;
     }
 
 }
