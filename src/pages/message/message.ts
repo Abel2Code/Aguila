@@ -1,4 +1,4 @@
-import { Component, NgZone, ViewChild } from '@angular/core';
+import { Component, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { LoginSignupApi } from '../../providers/login-signup-api';
 import { Storage } from '@ionic/storage';
@@ -22,7 +22,7 @@ export class MessagePage {
   messageData: String;
   userId;
   isMentor = false;
-  @ViewChild(Content) content: Content;
+  @ViewChild('messageBox') private messageBox: ElementRef;
 
   conversation: string;
 
@@ -31,6 +31,8 @@ export class MessagePage {
   zone: any;
   headers: any;
 
+  mentorInfo: JSON;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private loginProvider: LoginSignupApi, private storage: Storage) {
     this.loginProvider.getMessages(this.navParams.data._id).then((data: any) => {
       this.messages = data;
@@ -38,23 +40,26 @@ export class MessagePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MessagePage');
 
     this.storage.get('id').then((data: any) => {
       this.userId = data;
       if (this.navParams.data.mentor == this.userId) {
-        console.log(this.navParams.data.mentor);
-        console.log("Mentor:", this.userId);
-        console.log("is a mentor")
         this.isMentor = true;
       }
 
       this.conversation = this.navParams.data._id
-      console.log(this.navParams);
-
+    
       if (this.conversation == null) {
         this.conversation = "";
       }
+
+      if(!this.isMentor){
+        this.loginProvider.getMentorInfo(this.navParams.data.mentor).then((mentorInfo: any) => {
+          this.mentorInfo = mentorInfo;
+        });
+      }
+      
+      this.scrollToBottom();
 
       this.socket = io(this.socketHost + this.conversation);
 
@@ -67,14 +72,17 @@ export class MessagePage {
       this.socket.on("new message", (msg) => {
         this.zone.run(() => {
           this.messages.push(msg);
-          console.log(msg.message);
-          // this.content.scrollToBottom();
+          this.scrollToBottom();
         })
       });
     });
   }
 
   addMessage() {
+    if(this.messageData == null || this.messageData == ''){
+      return;
+    }
+
     let message = {
       isMentor: this.isMentor,
       message: this.messageData
@@ -85,8 +93,13 @@ export class MessagePage {
     this.socket.emit('new message', message);
   }
 
-  scrollToBottom() {
-
+  scrollToBottom() {   
+    try { 
+      // Using SetTimeout is hacky. See if a better solution can be found to scroll to bottom after html updates.
+      setTimeout(()=>{
+        this.messageBox.nativeElement.scrollTop = this.messageBox.nativeElement.scrollHeight;
+      }, 100);
+    } catch(err){ }
   }
 
   goBack() {

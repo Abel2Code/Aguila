@@ -215,9 +215,17 @@ page-home {
       height: 2%
     }
 
-    #card {
+    .card {
       border-radius: 5px; 
       padding: 0.5em;
+    }
+
+    .disabledCard {
+      background-color: #eeeeee;
+    }
+
+    .disabledCardText {
+      color: #777777;
     }
 
     .conversation-title {

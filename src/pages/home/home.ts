@@ -20,6 +20,7 @@ export class HomePage {
   id: String;
   token: String;
   conversations : any;
+  userInfo: JSON;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl : AlertController, private loginProvider : LoginSignupApi, private storage: Storage) {
@@ -34,9 +35,13 @@ export class HomePage {
       this.token = data;
     });
 
+    this.loginProvider.getUserInfo().then((userInfo: any) => {
+      this.userInfo = userInfo;
+      this.storage.set('userInfo', userInfo);
+    });
   }
 
-  ionViewDidLoad() { }
+  ionViewDidLoad() {}
 
   changeLayout(value){
     switch(value){
@@ -47,6 +52,7 @@ export class HomePage {
         this.layout = "points";
         break;
       case 2:
+        this.getConversations();
         this.layout = "inbox";
         break;
       default:
@@ -67,9 +73,10 @@ export class HomePage {
             title: 'Question Posted',
             buttons: ['Great!']
           });
+          this.title = '';
+          this.description = '';
           alert.present();
         } else {
-          console.log(data);
           let alert = this.alertCtrl.create({
             title: 'ERROR',
             buttons: ['Dismiss']
@@ -83,6 +90,7 @@ export class HomePage {
   getConversations(){
     this.loginProvider.getAskerConversations(this.id).then((data: any)=>{
       this.conversations = data.reverse();
+      console.log(this.conversations);
     });
   }
 
