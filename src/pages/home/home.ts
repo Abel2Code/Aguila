@@ -52,6 +52,7 @@ export class HomePage {
         this.layout = "points";
         break;
       case 2:
+        this.getConversations();
         this.layout = "inbox";
         break;
       default:
@@ -72,6 +73,8 @@ export class HomePage {
             title: 'Question Posted',
             buttons: ['Great!']
           });
+          this.title = '';
+          this.description = '';
           alert.present();
         } else {
           let alert = this.alertCtrl.create({
@@ -87,6 +90,7 @@ export class HomePage {
   getConversations(){
     this.loginProvider.getAskerConversations(this.id).then((data: any)=>{
       this.conversations = data.reverse();
+      console.log(this.conversations);
     });
   }
 

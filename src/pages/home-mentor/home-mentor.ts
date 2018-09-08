@@ -58,6 +58,8 @@ export class HomeMentorPage {
   changeLayout(value){
     switch(value){
       case 0:
+        this.getJobs();
+        console.log('hi');
         this.layout = "question";
         break;
       case 1:
@@ -72,31 +74,6 @@ export class HomeMentorPage {
       default:
         this.layout = "error";
     }
-  }
-
-  submitToJobBoard(){
-      let data =
-        {title: this.title,
-        category: "N/A",
-        author: this.id,
-        description: this.description};
-
-      this.loginProvider.postQuestion(data).then((data : any) =>{
-        if(data.message == "Question Posted"){
-          let alert = this.alertCtrl.create({
-            title: 'Question Posted',
-            buttons: ['Great!']
-          });
-          alert.present();
-        } else {
-          let alert = this.alertCtrl.create({
-            title: 'ERROR',
-            buttons: ['Dismiss']
-          });
-          alert.present();
-        }
-      });;
-
   }
 
   getJobs(){
