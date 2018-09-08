@@ -62,7 +62,7 @@ export class MessagePage {
 
       this.scrollToBottom();
 
-      this.socket = io(this.socketHost + this.conversation);
+      this.socket = io(this.socketHost + "/" + this.conversation);
 
       this.zone = new NgZone({
         enableLongStackTrace: false
