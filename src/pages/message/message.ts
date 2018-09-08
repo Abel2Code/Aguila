@@ -2,6 +2,7 @@ import { Component, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { LoginSignupApi } from '../../providers/login-signup-api';
 import { Storage } from '@ionic/storage';
+import { ProviderConstants } from '../../providers/login-signup-api';
 
 import * as io from 'socket.io-client';
 
@@ -26,7 +27,7 @@ export class MessagePage {
 
   conversation: string;
 
-  socketHost: string = "http://localhost:3000/";
+  socketHost: string = ProviderConstants.domain;
   socket: any;
   zone: any;
   headers: any;
@@ -48,7 +49,7 @@ export class MessagePage {
       }
 
       this.conversation = this.navParams.data._id
-    
+
       if (this.conversation == null) {
         this.conversation = "";
       }
@@ -58,7 +59,7 @@ export class MessagePage {
           this.mentorInfo = mentorInfo;
         });
       }
-      
+
       this.scrollToBottom();
 
       this.socket = io(this.socketHost + this.conversation);
@@ -93,8 +94,8 @@ export class MessagePage {
     this.socket.emit('new message', message);
   }
 
-  scrollToBottom() {   
-    try { 
+  scrollToBottom() {
+    try {
       // Using SetTimeout is hacky. See if a better solution can be found to scroll to bottom after html updates.
       setTimeout(()=>{
         this.messageBox.nativeElement.scrollTop = this.messageBox.nativeElement.scrollHeight;

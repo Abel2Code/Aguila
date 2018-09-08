@@ -4,10 +4,14 @@ import 'rxjs/add/operator/map';
 
 import { Storage } from '@ionic/storage';
 
+export class ProviderConstants {
+  static domain: string = "http://ec2-52-207-238-155.compute-1.amazonaws.com:80"
+}
+
 
 @Injectable()
 export class LoginSignupApi {
-  domain : String = " http://ec2-52-207-238-155.compute-1.amazonaws.com:80/api/";
+  domain : String = ProviderConstants.domain + "/api/";
 
   constructor(public http: Http, private storage: Storage) {
 
