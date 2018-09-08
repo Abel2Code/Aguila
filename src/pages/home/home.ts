@@ -49,7 +49,7 @@ export class HomePage {
         this.layout = "question";
         break;
       case 1:
-        this.layout = "points";
+        // this.layout = "points";
         break;
       case 2:
         this.getConversations();

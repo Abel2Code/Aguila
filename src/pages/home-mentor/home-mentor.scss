@@ -8,8 +8,6 @@ page-home {
       font-size: 42px
     }
 
-
-
     .title-box-title {
       font-size: 46px !important;
     }
@@ -81,9 +79,9 @@ page-home {
       height: 4em;
       padding-left: 6%;
       padding-right: 6%;
-      border-right: 2px solid gray; 
+      border-right: 2px solid gray;
       border-left: 2px solid gray;
-  
+
     }
 
     .menu-option3 {
@@ -99,7 +97,7 @@ page-home {
       left: 40%;
       bottom: 20px;
     }
-    
+
     #background-USC {
       position:absolute;
       z-index:-3;
@@ -135,7 +133,7 @@ page-home {
     }
 
     p {
-      color: black;
+      color: black !important;
     }
 
     #student-info-box {
@@ -144,7 +142,7 @@ page-home {
       right: 2%;
       flex-direction: column;
     }
-    
+
     .student-info {
       text-align: center;
     position: relative;
@@ -172,11 +170,11 @@ page-home {
     }
 
     #ask_question {
-      background-color: white;
+      background-color: #e7f0f4;
       border-radius: 10px;
       margin-left: 1.2em;
-      margin-top: 2em;
       padding: 1em;
+      padding-top:0px;
       width: 90%;
     }
 

@@ -9,18 +9,16 @@ page-message {
     left: 15px;
   }
   .messageContainer {
-    overflow: scroll; 
-    height: 100%; 
+    overflow: scroll;
+    height: 100%;
     margin: 0px;
   }
-  .messageName {
-    margin-left: 15%;
-  }
+  
   .imgContainer {
     display: flex;
   }
   .profileImage {
-    height:1.5em; 
+    height:1.5em;
     margin-right: 5px;
   }
   .inputContainer {
@@ -29,14 +27,14 @@ page-message {
   .userMessage {
     font-size:18px;
     border-radius:15px;
-    height:100%; 
-    width: 80%; 
+    height:100%;
+    width: 80%;
     border-style: groove;
   }
   .addMessageButton {
     padding-top: 0.4em;
-    width: 32px; 
-    height: 100%; 
+    width: 32px;
+    height: 100%;
     margin-left: 13px;
   }
   ion-header {
@@ -48,7 +46,7 @@ page-message {
   ion-item{
     padding-left: 0px !important;
   }
-  
+
 
   #others-name {
     text-align: center;
@@ -64,6 +62,11 @@ page-message {
     background-color: #4080ff;
     margin-left: 2em;
     color: white;
+    white-space: normal;
+  }
+
+  .senderName {
+    word-wrap: normal;
   }
 
   .other-sent {

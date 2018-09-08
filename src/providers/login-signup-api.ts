@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class LoginSignupApi {
-  domain : String = " http://localhost:3000/api/";
+  domain : String = " http://ec2-52-207-238-155.compute-1.amazonaws.com:80/api/";
 
   constructor(public http: Http, private storage: Storage) {
 

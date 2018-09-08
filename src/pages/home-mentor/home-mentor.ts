@@ -59,11 +59,10 @@ export class HomeMentorPage {
     switch(value){
       case 0:
         this.getJobs();
-        console.log('hi');
         this.layout = "question";
         break;
       case 1:
-        this.layout = "points";
+        // this.layout = "points";
         break;
       case 2:
         this.layout = "inbox";

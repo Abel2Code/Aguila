@@ -18,10 +18,10 @@
       <ion-item *ngIf="data.isMentor && !isMentor" no-lines>
         <div class="chat-text" item-left>
           <div class="messageName">
-            <p>James</p>
+            <p class="senderName" *ngIf="mentorInfo">{{mentorInfo['firstName']}}</p>
           </div>
           <div class="imgContainer">
-            <img class="profileImage" src="../../assets/imgs/defaultProfile.png" />
+            <!-- <img class="profileImage" src="../../assets/imgs/defaultProfile.png" /> -->
             <p class="other-sent message">{{data.message}}</p>
           </div>
         </div>
@@ -33,11 +33,8 @@
       </ion-item>
       <ion-item *ngIf="!data.isMentor && isMentor" no-lines>
         <div class="chat-text" item-left>
-          <div class="messageName">
-            <p>James</p>
-          </div>
           <div class="imgContainer">
-            <img class="profileImage" src="../../assets/imgs/defaultProfile.png" />
+            <!-- <img class="profileImage" src="../../assets/imgs/defaultProfile.png" /> -->
             <p class="other-sent message">{{data.message}}</p>
           </div>
         </div>

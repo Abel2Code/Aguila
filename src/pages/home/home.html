@@ -25,19 +25,19 @@
     </div>
     <div class='options'>
       <img class="menu-option" width="13%" src="../../assets/imgs/luggage.png" (click)="changeLayout(0)" />
-      <img class="menu-option2" width="30%" src="../../assets/imgs/12points.png" (click)="changeLayout(1)" />
+      <img class="menu-option2" width="30%" src="../../assets/imgs/12points-Soon.png" (click)="changeLayout(1)" />
       <img class="menu-option3" width="17%" src="../../assets/imgs/envelope.png" (click)="changeLayout(2)" />
     </div>
   </div>
   <div id="ask_question" *ngIf="layout === 'question'">
-
+    <h2 style="text-align: center; margin-top: 0px;">Ask Your Questions Here!</h2>
     <div>
       <div class="title-box">
-        <p class="title-box-title">Title:</p>
+        <p class="title-box-title">Question:</p>
         <input class="input-field title-input" type="text" [(ngModel)]="this.title" />
       </div>
 
-      <p class="title-box-question">New Question:</p>
+      <p class="title-box-question">Description:</p>
       <textarea type="text" class="input-field" [(ngModel)]="this.description" rows="5"></textarea>
       <button id="send_question" (click)="submitToJobBoard()">Send</button>
 
@@ -78,7 +78,7 @@
 
   <div id="inbox" *ngIf="layout === 'inbox'">
     <div *ngIf="conversations.length === 0">
-      <h3>No Replies Yet :|</h3>
+      <h3>Try Posting a Question first!</h3>
     </div>
     <div *ngIf="conversations.length != 0">
       <div id="convoBox" *ngFor="let conversation of conversations">

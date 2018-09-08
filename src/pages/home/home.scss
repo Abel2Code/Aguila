@@ -58,7 +58,7 @@ page-home {
 
   }
 
- 
+
   .scroll-content {
       overflow: hidden;
     }
@@ -125,7 +125,7 @@ page-home {
     }
 
     #header {
-      color: #d7dee4;
+      color: #FFF !important;
       font-size: 16.1px;
       margin-right: 100%;
       margin-left: 100%;
@@ -141,7 +141,7 @@ page-home {
     }
 
     p {
-      color: black;
+      color: black !important;
     }
 
     .student-info-box {
@@ -216,7 +216,7 @@ page-home {
     }
 
     .card {
-      border-radius: 5px; 
+      border-radius: 5px;
       padding: 0.5em;
     }
 
@@ -225,11 +225,11 @@ page-home {
     }
 
     .disabledCardText {
-      color: #777777;
+      color: #777777 !important;
     }
 
     .conversation-title {
-      font-weight: bold; 
+      font-weight: bold;
       font-size: 18px;
     }
 
@@ -283,16 +283,16 @@ page-home {
       border-radius: 6px;
     }
     .menu-option-prize {
-      height: 4em; 
+      height: 4em;
     }
-    
+
     .spacing {
-      padding-right: 20px; 
+      padding-right: 20px;
       padding-bottom: 5px;
     }
 
     .lineSplittingPointPrize {
-      width: 2px; 
+      width: 2px;
       background-color: #BBB
     }
 
